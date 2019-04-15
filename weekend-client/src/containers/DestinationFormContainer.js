@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import AutocompleteSearch from '../components/AutocompleteSearch';
-import AddDestinationTags from '../components/AddDestinationTags';
+import AddDestinationTag from '../components/AddDestinationTag';
 
 class DestinationFormContainer extends Component {
 	constructor(props) {
@@ -11,7 +11,9 @@ class DestinationFormContainer extends Component {
 			sessionToken: this.createSessionToken(),
 			latLng: {},
 			addTags: false,
-			tags: []
+			tags: [],
+			tagCount: 0,
+			destination: ''
 		};
 	}
 
@@ -22,17 +24,44 @@ class DestinationFormContainer extends Component {
 	};
 
 	handleSubmit = (ev) => {
+		debugger;
 		ev.preventDefault();
 		console.log('Handling form submit.');
 	};
 
 	setLatLng = (latLng) => {
 		console.log('Setting lat/lon state in form.');
-		this.setState({ latLng, addTags: true }, console.log('Here.'));
+		this.setState((prevState) => {
+			return { latLng: latLng, addTags: true };
+		});
 	};
 
-	addTag = (tag) => {
-		console.log('Adding a tag.');
+	setDestination = (destination) => {
+		this.setState({ destination });
+	};
+
+	renderTagForm = () => {
+		let tempArray = [];
+		for (let i = 0; i < this.state.tagCount; i++) {
+			tempArray.push('item');
+		}
+		return tempArray.map((item) => {
+			return <AddDestinationTag persistTag={this.persistTag} />;
+		});
+	};
+
+	addNewTagForm = () => {
+		this.setState((prevState) => {
+			return { tagCount: prevState.tagCount + 1, addTags: false };
+		});
+	};
+
+	persistTag = (ev) => {
+		ev.preventDefault();
+		let string = ev.target.value;
+		let hashTag = '#' + string.split(' ').join('');
+		this.state.tags.push(hashTag);
+		this.setState({ addTags: true, tagCount: 0 });
 	};
 
 	render() {
@@ -40,8 +69,25 @@ class DestinationFormContainer extends Component {
 			<div>
 				<h3>Add New Destination:</h3>
 				<form onSubmit={(ev) => this.handleSubmit(ev)}>
-					<AutocompleteSearch setLatLng={this.setLatLng} />
-					{true ? <AddDestinationTags tags={this.state.tags} addTag={this.addTag} /> : null}
+					{this.state.destination === '' ? (
+						<AutocompleteSearch setLatLng={this.setLatLng} setDestination={this.setDestination} />
+					) : (
+						<div>
+							<h2>{this.state.destination}</h2>
+							<h3>{this.state.tags.join(' ')}</h3>
+						</div>
+					)}
+					{this.renderTagForm()}
+					{this.state.addTags ? (
+						<button
+							onClick={(ev) => {
+								this.addNewTagForm(ev);
+							}}
+						>
+							Add Tag
+						</button>
+					) : null}
+					<br />
 					<input type="submit" />
 				</form>
 			</div>
