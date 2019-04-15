@@ -14,11 +14,15 @@ class AutocompleteSearch extends React.Component {
     this.setState({ address });
   };
 
+  // This method returns the selected destination's "latLng" and "address"
+  // to the form to set state in DestinationFormContainer. Destination found
+  // by PlacesAutocomplete below.
   handleSelect = address => {
     geocodeByAddress(address)
       .then(results => getLatLng(results[0]))
       .then(latLng => {
-        this.props.setLatLng(latLng)
+        this.props.setLatLng(latLng);
+        this.props.setDestination(address)
       })
       .catch(error => console.error('Error', error));
   };
