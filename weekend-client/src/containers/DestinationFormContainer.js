@@ -3,33 +3,28 @@ import PlacesAutocomplete from 'react-places-autocomplete';
 import AutocompleteSearch from '../components/AutocompleteSearch';
 
 class DestinationFormContainer extends Component {
-  constructor(props){
-    super(props)
+	constructor(props) {
+		super(props);
 
-    this.state = {
-      userInput: "",
-      sessionToken: this.createSessionToken()
-    }
+		this.state = {
+			userInput: '',
+			sessionToken: this.createSessionToken()
+		};
+	}
 
-  }
+	createSessionToken = () => {
+		let token = Math.random() * 1000000000000000000;
+		console.log('TOKEN:', token);
+		return token;
+	};
 
-  createSessionToken = () => {
-    let token = Math.random()*1000000000000000000
-    console.log("TOKEN:", token)
-    return token
-  }
-
-
-
-
-  render() {
-    return (
-      <div>
-
-        <AutocompleteSearch />
-      </div>
-    );
-  }
+	render() {
+		return (
+			<div>
+				<AutocompleteSearch />
+			</div>
+		);
+	}
 }
 
 export default DestinationFormContainer;
