@@ -13,11 +13,11 @@ class App extends Component {
 	render() {
 		return (
 			<div>
-				<DestinationFormContainer />
+				<HomeContainer />
 			</div>
 		);
 	}
 }
+// <DestinationFormContainer />
 
-// <HomeContainer id="home-container" />
 export default App;

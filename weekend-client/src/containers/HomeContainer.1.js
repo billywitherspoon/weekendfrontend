@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LoginContainer from './LoginContainer.js';
+import LoginForm from '../components/LoginForm.js';
 
 class HomeContainer extends Component {
 	constructor(props) {
@@ -9,7 +9,7 @@ class HomeContainer extends Component {
 	render() {
 		return (
 			<div id="home-container">
-				<LoginContainer />
+				<LoginForm />
 			</div>
 		);
 	}

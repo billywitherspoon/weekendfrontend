@@ -1,34 +1,22 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class LoginForm extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			emailLogin: ''
-		};
-	}
-
-	handleEmailLoginChange = (ev) => {
-		this.setState({
-			[ev.target.name]: ev.target.value
-		});
-		console.log('loginState', this.state.emailLogin);
-	};
-
-	render() {
-		return (
-			<form>
+const LoginForm = (props) => {
+	return (
+		<div className="user-form-container">
+			<form className="user-form" onSubmit={(ev) => props.handleLoginSubmit(ev)}>
 				<label>Enter Username</label>
 				<input
 					type="text"
-					name="emailLogin"
-					placeholder="Enter your e-mail"
-					value={this.state.emailLogin}
-					onChange={this.handleEmailLoginChange}
+					name="username"
+					placeholder=""
+					value={props.username}
+					onChange={props.handleNameChange}
 				/>
+				<input type="submit" value="Login" />
 			</form>
-		);
-	}
-}
+			<button onClick={props.ActivateSignUp} value="Sign Up!" />
+		</div>
+	);
+};
 
 export default LoginForm;
