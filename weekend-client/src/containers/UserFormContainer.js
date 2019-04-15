@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import LoginForm from '../components/LoginForm.js';
 import SignUpForm from '../components/SignUpForm.js';
 
-class LoginContainer extends Component {
+class UserFormContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -13,11 +13,11 @@ class LoginContainer extends Component {
 		};
 	}
 
-	handleUsernameChange = (ev) => {
+	handleNameChange = (ev) => {
 		this.setState({
 			[ev.target.name]: ev.target.value
 		});
-		console.log('loginState minus last input:', this.state.username);
+		console.log('state minus last input:', this.state);
 	};
 
 	handleLoginSubmit = (ev) => {
@@ -32,10 +32,13 @@ class LoginContainer extends Component {
 		console.log(ev);
 	};
 
-	ActivateSignUp = () => {
-		this.setState({
-			signUpActive: true
+	toggleSignUp = () => {
+		this.setState((st) => {
+			return {
+				signUpActive: !st.signUpActive
+			};
 		});
+		console.log('sign up toggled');
 	};
 
 	renderUserForm = () => {
@@ -47,6 +50,7 @@ class LoginContainer extends Component {
 					firstName={this.state.firstName}
 					lastName={this.state.lastName}
 					handleSignUpSubmit={this.handleSignUpSubmit}
+					toggleSignUp={this.toggleSignUp}
 				/>
 			);
 		} else {
@@ -55,15 +59,15 @@ class LoginContainer extends Component {
 					handleNameChange={this.handleNameChange}
 					handleLoginSubmit={this.handleLoginSubmit}
 					username={this.state.username}
-					activeSignUp={this.activeSignUp}
+					toggleSignUp={this.toggleSignUp}
 				/>
 			);
 		}
 	};
 
 	render() {
-		return <div id="login-container">{this.renderUserForm()}</div>;
+		return <div id="user-form-container">{this.renderUserForm()}</div>;
 	}
 }
 
-export default LoginContainer;
+export default UserFormContainer;
