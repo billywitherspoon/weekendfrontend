@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import AddDestinationForm from './components/AddDestinationForm'
+import DestinationFormContainer from './containers/DestinationFormContainer'
 
 class App extends Component {
   constructor(){
@@ -14,7 +14,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <AddDestinationForm />
+        <DestinationFormContainer />
       </div>
     );
   }

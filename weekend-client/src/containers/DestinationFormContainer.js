@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PlacesAutocomplete from 'react-places-autocomplete';
-import AutocompleteSearch from './AutocompleteSearch';
+import AutocompleteSearch from '../components/AutocompleteSearch';
 
-class AddDestinationForm extends Component {
+class DestinationFormContainer extends Component {
   constructor(props){
     super(props)
 
@@ -25,10 +25,11 @@ class AddDestinationForm extends Component {
   render() {
     return (
       <div>
+
         <AutocompleteSearch />
       </div>
     );
   }
 }
 
-export default AddDestinationForm;
+export default DestinationFormContainer;
