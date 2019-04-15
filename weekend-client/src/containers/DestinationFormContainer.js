@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import PlacesAutocomplete from 'react-places-autocomplete';
 import AutocompleteSearch from '../components/AutocompleteSearch';
+import AddDestinationTags from '../components/AddDestinationTags';
 
 class DestinationFormContainer extends Component {
 	constructor(props) {
@@ -8,7 +8,10 @@ class DestinationFormContainer extends Component {
 
 		this.state = {
 			userInput: '',
-			sessionToken: this.createSessionToken()
+			sessionToken: this.createSessionToken(),
+			latLng: {},
+			addTags: false,
+			tags: []
 		};
 	}
 
@@ -18,10 +21,29 @@ class DestinationFormContainer extends Component {
 		return token;
 	};
 
+	handleSubmit = (ev) => {
+		ev.preventDefault();
+		console.log('Handling form submit.');
+	};
+
+	setLatLng = (latLng) => {
+		console.log('Setting lat/lon state in form.');
+		this.setState({ latLng, addTags: true }, console.log('Here.'));
+	};
+
+	addTag = (tag) => {
+		console.log('Adding a tag.');
+	};
+
 	render() {
 		return (
 			<div>
-				<AutocompleteSearch />
+				<h3>Add New Destination:</h3>
+				<form onSubmit={(ev) => this.handleSubmit(ev)}>
+					<AutocompleteSearch setLatLng={this.setLatLng} />
+					{true ? <AddDestinationTags tags={this.state.tags} addTag={this.addTag} /> : null}
+					<input type="submit" />
+				</form>
 			</div>
 		);
 	}
