@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import DestinationFormContainer from '../containers/DestinationFormContainer';
 
+import DestinationCard from './DestinationCard'
+
 class Explore extends Component {
   render() {
     return (
@@ -12,6 +14,10 @@ class Explore extends Component {
         loginUser={this.props.loginUser}
         logoutUser={this.props.logoutUser}
       />
+      {this.props.allDestinations.map(destination => {
+        return <DestinationCard destination={destination}/>
+      })}
+
       </div>
     );
   }

@@ -6,19 +6,30 @@ import DestinationFormContainer from './DestinationFormContainer';
 class HomeContainer extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {};
+		this.state = {
+			allDestinations: []
+		};
+		this.fetchDestinations()
+	}
+
+	fetchDestinations = () => {
+		fetch("http://localhost:3000/api/v1/destinations")
+		.then(res => res.json())
+		.then(json => {
+			this.setState({allDestinations: json})
+		})
 	}
 
 	render() {
 		return (
 			<div id="home-container">
-				<DestinationFormContainer
-					currentUser={this.props.currentUser}
-					loginUser={this.props.loginUser}
-					logoutUser={this.props.logoutUser}
-				/>
+			
 				{this.props.currentUser ? (
-					<UserPageContainer currentUser={this.props.currentUser} logoutUser={this.props.logoutUser} />
+					<UserPageContainer
+						currentUser={this.props.currentUser}
+						logoutUser={this.props.logoutUser}
+						allDestinations={this.state.allDestinations}
+					/>
 				) : (
 					<UserFormContainer
 						currentUser={this.props.currentUser}
