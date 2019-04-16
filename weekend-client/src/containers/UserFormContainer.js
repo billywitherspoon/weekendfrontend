@@ -30,16 +30,33 @@ class UserFormContainer extends Component {
 		ev.preventDefault();
 		console.log('Sign Up Submitted:');
 		console.log(ev);
+		fetch('http://localhost:3000/api/v1/users', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json'
+			},
+			body: JSON.stringify({
+				username: `${this.state.username}`,
+				first_name: `${this.state.firstName}`,
+				last_name: `${this.state.lastName}`
+			})
+				.then((res) => res.json())
+				.then((json) => console.log(json))
+				.catch((error) => console.error('Error', error))
+		});
 	};
 
-	toggleSignUp = () => {
-		this.setState((st) => {
-			return {
-				signUpActive: !st.signUpActive
-			};
-		});
-		console.log('sign up toggled');
-	};
+	// fetch("http://localhost:3000/api/v1/destinations", {
+	//    method: 'POST',
+	//    headers: {
+	//      'Accept': 'application/json',
+	//      'Content-Type': 'application/json'
+	//    },
+	//    body: JSON.stringify(destinationData)
+	//    }).then(res => res.json())
+	//    .then(json => console.log(json))
+	//    .catch(error => console.error('Error', error))
 
 	renderUserForm = () => {
 		if (this.state.signUpActive) {
