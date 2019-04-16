@@ -31,9 +31,10 @@ class DestinationFormContainer extends Component {
       destination: {
         latitude: this.state.latLng.lat,
         longitude: this.state.latLng.lng,
-        name: this.state.destination},
-      tags: this.state.tags,
-      user_id: 1
+        name: this.state.destination,
+        tags: this.state.tags,
+        user_id: 1}
+      
     }
 
     console.log("DATA: ", destinationFormData)
