@@ -24,9 +24,28 @@ class DestinationFormContainer extends Component {
 	};
 
 	handleSubmit = (ev) => {
-		debugger;
 		ev.preventDefault();
 		console.log('Handling form submit.');
+
+    let destinationData = {
+      latitude: this.state.latLng.lat,
+      longitude: this.state.latLng.lng,
+      name: this.state.destination,
+      tags: this.state.tags
+    }
+
+    console.log("DATA: ", destinationData)
+
+    fetch("http://localhost:3000/api/v1/destinations", {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(destinationData)
+      }).then(res => res.json())
+      .then(json => console.log(json))
+      .catch(error => console.error('Error', error))
 	};
 
 	setLatLng = (latLng) => {
@@ -66,7 +85,7 @@ class DestinationFormContainer extends Component {
 
 	render() {
 		return (
-			<div>
+			<div id="destination-form-container">
 				<h3>Add New Destination:</h3>
 				<form onSubmit={(ev) => this.handleSubmit(ev)}>
 					{this.state.destination === '' ? (

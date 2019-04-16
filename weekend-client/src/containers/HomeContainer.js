@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import UserFormContainer from './UserFormContainer.js';
+import DestinationFormContainer from './DestinationFormContainer'
 
 class HomeContainer extends Component {
 	constructor(props) {
@@ -9,6 +10,7 @@ class HomeContainer extends Component {
 	render() {
 		return (
 			<div id="home-container">
+				<DestinationFormContainer />
 				<UserFormContainer />
 			</div>
 		);

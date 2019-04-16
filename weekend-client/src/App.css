@@ -29,6 +29,14 @@ body {
   grid-column: 5 / 9;
 }
 
+#destination-form-container {
+  grid-row: 1 / 5;
+  grid-column: 5 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .user-form-grid {
   height: 100%;
   width: 100%;

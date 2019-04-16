@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import DestinationFormContainer from './containers/DestinationFormContainer';
 import HomeContainer from './containers/HomeContainer.js';
 
 class App extends Component {
@@ -19,7 +18,6 @@ class App extends Component {
 	}
 }
 
-//<DestinationFormContainer />
 
 
 export default App;
