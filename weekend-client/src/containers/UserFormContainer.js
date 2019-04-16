@@ -24,16 +24,20 @@ class UserFormContainer extends Component {
 		ev.preventDefault();
 		console.log('Login Submitted:');
 		console.log(ev);
-		fetch(`http://localhost:3000/api/v1/users/username/${this.state.username}`)
-			.then((res) => res.json())
-			.then((json) => {
-				console.log(json);
-				if (json.error) {
-					alert(json.error);
-				} else {
-					this.props.loginUser(json.id);
-				}
-			});
+		if (this.state.username) {
+			fetch(`http://localhost:3000/api/v1/users/username/${this.state.username}`)
+				.then((res) => res.json())
+				.then((user_json) => {
+					console.log(user_json);
+					if (user_json.error) {
+						alert(user_json.error);
+					} else {
+						this.props.loginUser(user_json);
+					}
+				});
+		} else {
+			alert('Please fill in all fields');
+		}
 	};
 
 	toggleSignUp = () => {
@@ -46,33 +50,35 @@ class UserFormContainer extends Component {
 	};
 
 	handleSignUpSubmit = (ev) => {
-		let userData = {
-			username: `${this.state.username}`,
-			first_name: `${this.state.firstName}`,
-			last_name: `${this.state.lastName}`
-		};
-		console.log(userData);
 		ev.preventDefault();
 		console.log('Sign Up Submitted:');
-		console.log(ev);
-		fetch('http://localhost:3000/api/v1/users', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				Accept: 'application/json'
-			},
-			body: JSON.stringify(userData)
-		})
-			.then((res) => res.json())
-			.then((json) => {
-				console.log(json);
-				if (json.error) {
-					alert(json.error);
-				} else {
-					this.props.loginUser(json.id);
-				}
+		if (this.state.username && this.state.firstName && this.state.lastName) {
+			let userData = {
+				username: `${this.state.username}`,
+				first_name: `${this.state.firstName}`,
+				last_name: `${this.state.lastName}`
+			};
+			fetch('http://localhost:3000/api/v1/users', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					Accept: 'application/json'
+				},
+				body: JSON.stringify(userData)
 			})
-			.catch((error) => console.error('Error', error));
+				.then((res) => res.json())
+				.then((user_json) => {
+					console.log(user_json);
+					if (user_json.error) {
+						alert(user_json.error);
+					} else {
+						this.props.loginUser(user_json);
+					}
+				})
+				.catch((error) => console.error('Error', error));
+		} else {
+			alert('Please fill in all fields');
+		}
 	};
 
 	renderUserForm = () => {

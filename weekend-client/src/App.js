@@ -11,9 +11,13 @@ class App extends Component {
 		};
 	}
 
-	loginUser = (currentUser) => {
+	loginUser = (userJson) => {
 		this.setState({
-			currentUser
+			currentUser: {
+				id: userJson.id,
+				firstName: userJson.first_name,
+				lastName: userJson.last_name
+			}
 		});
 		console.log('user logged in');
 	};

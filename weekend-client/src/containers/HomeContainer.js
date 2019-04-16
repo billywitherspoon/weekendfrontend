@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import UserFormContainer from './UserFormContainer.js';
 import DestinationFormContainer from './DestinationFormContainer';
+import Navbar from '../components/NavBar';
 
 class HomeContainer extends Component {
 	constructor(props) {
@@ -10,9 +11,7 @@ class HomeContainer extends Component {
 	render() {
 		return (
 			<div id="home-container">
-				<button class="button" id="logout-button" onClick={this.props.logoutUser}>
-					Logout
-				</button>
+				<Navbar currentUser={this.props.currentUser} logoutUser={this.props.logoutUser} />
 				<DestinationFormContainer
 					currentUser={this.props.currentUser}
 					loginUser={this.props.loginUser}
