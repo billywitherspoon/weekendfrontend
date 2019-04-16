@@ -15,7 +15,6 @@ class UserPageContainer extends Component {
 
 //Toggles between user'sprofile and explore page
   toggleView = () => {
-    console.log("Toggling View")
     this.setState((prevState) => {
       return {viewProfile: !(prevState.viewProfile)}
     })
@@ -27,15 +26,19 @@ class UserPageContainer extends Component {
       <div>
       Hello.
       {this.state.viewProfile?
-        <Profile toggleView={this.toggleView}/>
+        <Profile
+          toggleView={this.toggleView}
+          addDestination={this.addDestination}
+          currentUser={this.props.currentUser}
+        />
           :
-        <Explore toggleView={this.toggleView}/>
+        <Explore
+          toggleView={this.toggleView}
+          addDestination={this.addDestination}
+          currentUser={this.props.currentUser}
+        />
       }
-      <DestinationFormContainer
-        currentUser={this.props.currentUser}
-        loginUser={this.props.loginUser}
-        logoutUser={this.props.logoutUser}
-      />
+
       </div>
     );
   }
