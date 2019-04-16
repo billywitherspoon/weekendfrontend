@@ -15,12 +15,14 @@ class App extends Component {
 		this.setState({
 			currentUser
 		});
+		console.log('user logged in');
 	};
 
 	logoutUser = () => {
 		this.setState({
 			currentUser: ''
 		});
+		console.log('user logged out');
 	};
 
 	render() {
