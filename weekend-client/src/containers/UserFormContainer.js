@@ -24,6 +24,16 @@ class UserFormContainer extends Component {
 		ev.preventDefault();
 		console.log('Login Submitted:');
 		console.log(ev);
+		fetch(`http://localhost:3000/api/v1/users/username/${this.state.username}`)
+			.then((res) => res.json())
+			.then((json) => {
+				console.log(json);
+				if (json.error) {
+					alert(json.error);
+				} else {
+					this.props.loginUser(json.id);
+				}
+			});
 	};
 
 	toggleSignUp = () => {
@@ -56,7 +66,11 @@ class UserFormContainer extends Component {
 			.then((res) => res.json())
 			.then((json) => {
 				console.log(json);
-				this.props.loginUser(json.id);
+				if (json.error) {
+					alert(json.error);
+				} else {
+					this.props.loginUser(json.id);
+				}
 			})
 			.catch((error) => console.error('Error', error));
 	};
