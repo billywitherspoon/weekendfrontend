@@ -11,7 +11,6 @@ class HomeContainer extends Component {
 	render() {
 		return (
 			<div id="home-container">
-				<Navbar currentUser={this.props.currentUser} logoutUser={this.props.logoutUser} />
 				<DestinationFormContainer
 					currentUser={this.props.currentUser}
 					loginUser={this.props.loginUser}
@@ -27,4 +26,5 @@ class HomeContainer extends Component {
 	}
 }
 
+// <Navbar currentUser={this.props.currentUser} logoutUser={this.props.logoutUser} />
 export default HomeContainer;
