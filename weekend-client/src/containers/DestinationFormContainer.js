@@ -27,14 +27,16 @@ class DestinationFormContainer extends Component {
 		ev.preventDefault();
 		console.log('Handling form submit.');
 
-    let destinationData = {
-      latitude: this.state.latLng.lat,
-      longitude: this.state.latLng.lng,
-      name: this.state.destination,
-      tags: this.state.tags
+    let destinationFormData = {
+      destination: {
+        latitude: this.state.latLng.lat,
+        longitude: this.state.latLng.lng,
+        name: this.state.destination},
+      tags: this.state.tags,
+      user_id: 1
     }
 
-    console.log("DATA: ", destinationData)
+    console.log("DATA: ", destinationFormData)
 
     fetch("http://localhost:3000/api/v1/destinations", {
       method: 'POST',
@@ -42,7 +44,7 @@ class DestinationFormContainer extends Component {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify(destinationData)
+      body: JSON.stringify(destinationFormData)
       }).then(res => res.json())
       .then(json => console.log(json))
       .catch(error => console.error('Error', error))
