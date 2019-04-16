@@ -15,7 +15,7 @@ const LoginForm = (props) => {
 				<input type="submit" value="Login" />
 			</form>
 			<div id="user-form-text">OR</div>
-			<div className="button" onClick={props.toggleSignUp}>
+			<div className="button" id="toggle-sign-up-button" onClick={props.toggleSignUp}>
 				SIGN UP
 			</div>
 		</div>

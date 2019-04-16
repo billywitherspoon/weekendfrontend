@@ -10,6 +10,9 @@ class HomeContainer extends Component {
 	render() {
 		return (
 			<div id="home-container">
+				<button class="button" id="logout-button" onClick={this.props.logoutUser}>
+					Logout
+				</button>
 				<DestinationFormContainer
 					currentUser={this.props.currentUser}
 					loginUser={this.props.loginUser}
