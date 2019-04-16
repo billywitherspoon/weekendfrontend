@@ -26,7 +26,22 @@ class UserFormContainer extends Component {
 		console.log(ev);
 	};
 
+	toggleSignUp = () => {
+		this.setState((st) => {
+			return {
+				signUpActive: !st.signUpActive
+			};
+		});
+		console.log('sign up toggled');
+	};
+
 	handleSignUpSubmit = (ev) => {
+		let userData = {
+			username: `${this.state.username}`,
+			first_name: `${this.state.firstName}`,
+			last_name: `${this.state.lastName}`
+		};
+		console.log(userData);
 		ev.preventDefault();
 		console.log('Sign Up Submitted:');
 		console.log(ev);
@@ -36,32 +51,23 @@ class UserFormContainer extends Component {
 				'Content-Type': 'application/json',
 				Accept: 'application/json'
 			},
-			body: JSON.stringify({
-				username: `${this.state.username}`,
-				first_name: `${this.state.firstName}`,
-				last_name: `${this.state.lastName}`
+			body: JSON.stringify(userData)
+		})
+			.then((res) => res.json())
+			.then((json) => {
+				console.log(json);
+				this.props.loginUser(json.id);
 			})
-				.then((res) => res.json())
-				.then((json) => console.log(json))
-				.catch((error) => console.error('Error', error))
-		});
+			.catch((error) => console.error('Error', error));
 	};
-
-	// fetch("http://localhost:3000/api/v1/destinations", {
-	//    method: 'POST',
-	//    headers: {
-	//      'Accept': 'application/json',
-	//      'Content-Type': 'application/json'
-	//    },
-	//    body: JSON.stringify(destinationData)
-	//    }).then(res => res.json())
-	//    .then(json => console.log(json))
-	//    .catch(error => console.error('Error', error))
 
 	renderUserForm = () => {
 		if (this.state.signUpActive) {
 			return (
 				<SignUpForm
+					currentUser={this.props.currentUser}
+					loginUser={this.props.loginUser}
+					logoutUser={this.props.logoutUser}
 					handleNameChange={this.handleNameChange}
 					username={this.state.username}
 					firstName={this.state.firstName}
@@ -73,6 +79,9 @@ class UserFormContainer extends Component {
 		} else {
 			return (
 				<LoginForm
+					currentUser={this.props.currentUser}
+					loginUser={this.props.loginUser}
+					logoutUser={this.props.logoutUser}
 					handleNameChange={this.handleNameChange}
 					handleLoginSubmit={this.handleLoginSubmit}
 					username={this.state.username}

@@ -6,13 +6,31 @@ import HomeContainer from './containers/HomeContainer.js';
 class App extends Component {
 	constructor() {
 		super();
-		this.state = {};
+		this.state = {
+			currentUser: ''
+		};
 	}
+
+	loginUser = (currentUser) => {
+		this.setState({
+			currentUser
+		});
+	};
+
+	logoutUser = () => {
+		this.setState({
+			currentUser: ''
+		});
+	};
 
 	render() {
 		return (
 			<div>
-				<HomeContainer />
+				<HomeContainer
+					currentUser={this.state.currentUser}
+					loginUser={this.loginUser}
+					logoutUser={this.logoutUser}
+				/>
 			</div>
 		);
 	}
