@@ -1,27 +1,29 @@
-import React, { Component } from 'react';
+import React, { Component, PureComponent } from 'react';
 import AutocompleteSearch from '../components/AutocompleteSearch';
-import AddDestinationTag from '../components/AddDestinationTag';
+import AddDestinationTagForm from '../components/AddDestinationTagForm';
 
 class DestinationFormContainer extends Component {
 	constructor(props) {
 		super(props);
-
+		this.currentUser = JSON.parse(sessionStorage.getItem('user'));
 		this.state = {
 			userInput: '',
 			latLng: {},
-			addTags: false,
 			tags: [],
-			tagCount: 0,
 			destination: '',
 			placeId: '',
-			photos: []
+			photos: [],
+			currentTag: ''
 		};
 	}
 
-	handleSubmit = (ev) => {
-		ev.preventDefault();
-		console.log('Handling form submit.');
+	updateTagName = (ev) => {
+		this.setState({ [ev.target.name]: ev.target.value });
+	};
 
+	handleDestinationFormSubmit = (ev) => {
+		ev.preventDefault();
+		console.log('handling new form submit destination creation');
 		let destinationFormData = {
 			destination: {
 				latitude: this.state.latLng.lat,
@@ -49,9 +51,10 @@ class DestinationFormContainer extends Component {
 
 	setLatLng = (latLng) => {
 		console.log('Setting lat/lon state in form.');
-		this.setState((prevState) => {
-			return { latLng: latLng, addTags: true };
-		});
+		// this.setState((prevState) => {
+		// 	return { latLng: latLng };
+		// });
+		this.setState({ latLng });
 	};
 
 	setDestination = (destination) => {
@@ -68,64 +71,71 @@ class DestinationFormContainer extends Component {
 			.then((json) => console.log('IMGS?: ', json));
 	};
 
-	renderTagForm = () => {
-		let tempArray = [];
-		for (let i = 0; i < this.state.tagCount; i++) {
-			tempArray.push('item');
-		}
-		return tempArray.map((item) => {
-			return <AddDestinationTag persistTag={this.persistTag} />;
-		});
-	};
+	// renderTagForm = () => {
+	// 	// let tempArray = [];
+	// 	// for (let i = 0; i < this.state.tagCount; i++) {
+	// 	// 	tempArray.push('item');
+	// 	// }
+	// 	// return tempArray.map((item) => {
+	// 	return;
+	// };
 
-	addNewTagForm = () => {
-		this.setState((prevState) => {
-			return { tagCount: prevState.tagCount + 1, addTags: false };
-		});
-	};
+	// addNewTagForm = () => {
+	// 	this.setState((prevState) => {
+	// 		return { tagCount: prevState.tagCount + 1, addTags: false };
+	// 	});
+	// };
 
 	persistTag = (ev) => {
 		ev.preventDefault();
-		let string = ev.target.value;
-		let hashTag = '#' + string.split(' ').join('');
-		this.state.tags.push(hashTag);
-		this.setState({ addTags: true, tagCount: 0 });
+		let hashTag = '#' + this.state.currentTag.split(' ').join('');
+		this.setState((st) => {
+			return {
+				tags: st.tags.concat(hashTag),
+				currentTag: ''
+			};
+		});
+		console.log(hashTag);
+		// this.setState({ addTags: true, tagCount: 0 });
+	};
+
+	renderTags = () => {
+		return;
 	};
 
 	render() {
 		return (
-			<form className="destination-form" onSubmit={(ev) => this.handleSubmit(ev)}>
-				{this.state.destination === '' ? (
-					<AutocompleteSearch
-						setLatLng={this.setLatLng}
-						setDestination={this.setDestination}
-						setPlaceId={this.setPlaceId}
-					/>
+			<div className="destination-form-container">
+				{!this.state.destination ? (
+					<div className="destination-form-container">
+						<AutocompleteSearch
+							setLatLng={this.setLatLng}
+							setDestination={this.setDestination}
+							setPlaceId={this.setPlaceId}
+						/>
+					</div>
 				) : (
-					<div>
-						<h2>{this.state.destination}</h2>
-						<h3>{this.state.tags.join(' ')}</h3>
+					<div className="destination-form-container">
+						<div id="destination-display">
+							<h3>{this.state.destination}</h3>
+							{this.renderTags}
+							{this.state.tags.map((tag) => <h5>{tag}</h5>)}
+							<h5># {this.state.currentTag}</h5>
+						</div>
+						<AddDestinationTagForm
+							currentTag={this.state.currentTag}
+							persistTag={this.persistTag}
+							updateTagName={this.updateTagName}
+						/>
+						<button className="button" onClick={(ev) => this.handleDestinationFormSubmit(ev)}>
+							ADD TO MY FAVORITES
+						</button>
 					</div>
 				)}
-				{this.renderTagForm()}
-				{this.state.addTags ? (
-					<button
-						className="button"
-						onClick={(ev) => {
-							this.addNewTagForm(ev);
-						}}
-					>
-						Add Tag
-					</button>
-				) : null}
-				<br />
-				<input type="submit" value="ADD DESTINATION" className="button" />
-			</form>
+			</div>
 		);
 	}
 }
-
-export default DestinationFormContainer;
 
 // sessionToken: this.createSessionToken(),
 
@@ -134,3 +144,5 @@ export default DestinationFormContainer;
 // 	console.log('TOKEN:', token);
 // 	return token;
 // };
+
+export default DestinationFormContainer;

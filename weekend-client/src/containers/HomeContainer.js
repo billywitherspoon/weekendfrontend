@@ -5,19 +5,16 @@ import UserPageContainer from './UserPageContainer';
 class HomeContainer extends Component {
 	constructor(props) {
 		super(props);
+		this.currentUser = JSON.parse(sessionStorage.getItem('user'));
 		this.state = {
 			showDestinationFormContainer: false
 		};
 	}
 
 	renderUserPageContainer = () => {
-		if (this.props.currentUser) {
+		if (this.currentUser) {
 			return (
-				<UserPageContainer
-					currentUser={this.props.currentUser}
-					logoutUser={this.props.logoutUser}
-					allDestinations={this.state.allDestinations}
-				/>
+				<UserPageContainer logoutUser={this.props.logoutUser} allDestinations={this.state.allDestinations} />
 			);
 		}
 	};
@@ -27,7 +24,6 @@ class HomeContainer extends Component {
 			<div id="home-container">
 				{this.renderUserPageContainer()}
 				<UserFormContainer
-					currentUser={this.props.currentUser}
 					loginUser={this.props.loginUser}
 					logoutUser={this.props.logoutUser}
 					showDestinationFormContainer={this.state.showDestinationFormContainer}

@@ -4,10 +4,8 @@ import DestinationFormContainer from './DestinationFormContainer';
 class ProfileContainer extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			//this will live in user page container
-			//showDestinationForm: false
-		};
+		this.currentUser = JSON.parse(sessionStorage.getItem('user'));
+		this.state = {};
 	}
 
 	componentDidMount = () => {
@@ -15,7 +13,7 @@ class ProfileContainer extends Component {
 	};
 
 	fetchFavorites = () => {
-		fetch(`http://localhost:3000/api/v1/favorites/user/${this.props.currentUser.id}`)
+		fetch(`http://localhost:3000/api/v1/favorites/user/${this.currentUser.id}`)
 			.then((res) => res.json())
 			.then((json) => console.log(json));
 	};

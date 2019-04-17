@@ -7,7 +7,7 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			currentUser: ''
+			loggedIn: false
 		};
 	}
 
@@ -33,31 +33,30 @@ class App extends Component {
 	// }
 
 	loginUser = (userJson) => {
+		var user = {
+			id: userJson.id,
+			firstName: userJson.first_name,
+			lastName: userJson.last_name
+		};
+		var jsonUser = JSON.stringify(user);
+		sessionStorage.setItem('user', `${jsonUser}`);
 		this.setState({
-			currentUser: {
-				id: userJson.id,
-				firstName: userJson.first_name,
-				lastName: userJson.last_name
-			}
+			loggedIn: true
 		});
-		console.log('user logged in');
 	};
 
 	logoutUser = () => {
-		this.setState({
-			currentUser: ''
-		});
+		sessionStorage.removeItem('user');
 		console.log('user logged out');
+		this.setState({
+			loggedIn: false
+		});
 	};
 
 	render() {
 		return (
 			<div>
-				<HomeContainer
-					currentUser={this.state.currentUser}
-					loginUser={this.loginUser}
-					logoutUser={this.logoutUser}
-				/>
+				<HomeContainer loginUser={this.loginUser} logoutUser={this.logoutUser} />
 			</div>
 		);
 	}

@@ -1,6 +1,7 @@
 import React from 'react';
 
 const LoginForm = (props) => {
+	let currentUser = JSON.parse(sessionStorage.getItem('user'));
 	return (
 		<form className="user-form" onSubmit={(ev) => props.handleLoginSubmit(ev)}>
 			<label>Enter Username</label>

@@ -5,6 +5,7 @@ import SignUpForm from '../components/SignUpForm.js';
 class UserFormContainer extends Component {
 	constructor(props) {
 		super(props);
+		this.currentUser = JSON.parse(sessionStorage.getItem('user'));
 		this.state = {
 			username: '',
 			firstName: '',
@@ -85,11 +86,10 @@ class UserFormContainer extends Component {
 	};
 
 	renderUserForm = () => {
-		if (!this.props.currentUser && this.state.signUpActive) {
+		if (!this.currentUser && this.state.signUpActive) {
 			return (
 				<div id="user-form-container">
 					<SignUpForm
-						currentUser={this.props.currentUser}
 						loginUser={this.props.loginUser}
 						logoutUser={this.props.logoutUser}
 						handleNameChange={this.handleNameChange}
@@ -101,11 +101,10 @@ class UserFormContainer extends Component {
 					/>
 				</div>
 			);
-		} else if (!this.props.currentUser) {
+		} else if (!this.currentUser) {
 			return (
 				<div id="user-form-container">
 					<LoginForm
-						currentUser={this.props.currentUser}
 						loginUser={this.props.loginUser}
 						logoutUser={this.props.logoutUser}
 						handleNameChange={this.handleNameChange}

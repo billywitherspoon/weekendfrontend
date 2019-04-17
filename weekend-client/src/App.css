@@ -6,11 +6,15 @@ body {
 } */
 
 .nav-bar {
-  grid-row: 1;
-  grid-column: 1/-1;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 10vh;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  overflow: hidden;
+  background-color: #333;
 }
 
 .nav-bar-text {
@@ -19,7 +23,7 @@ body {
 
 #home-container {
   display: grid;
-  grid-template-rows: 4vh repeat(11, 1fr);
+  grid-template-rows: 10vh repeat(11, 1fr);
   grid-template-columns: repeat(12, 1fr);
   min-height: 100vh;
   width: 100vw;
@@ -29,8 +33,18 @@ body {
   grid-row: 1 / -1;
   grid-column: 1 / -1;
   display: grid;
-  grid-template-rows: 4vh repeat(11, 1fr);
+  grid-template-rows: 10vh repeat(11, 1fr);
   grid-template-columns: repeat(12, 1fr);
+}
+
+#profile-container {
+  grid-row: 2 / -1;
+  grid-column: 1 / -1;
+}
+
+#explore-container {
+  grid-row: 2 / -1;
+  grid-column: 1 / -1;
 }
 
 .blurred {
@@ -45,6 +59,19 @@ body {
 #user-form-container {
   /* grid-row: 3 / 9;
   grid-column: 4 / 10; */
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#destination-form-background {
+  z-index: 1;
   position: absolute;
   top: 0px;
   left: 0px;
@@ -73,12 +100,25 @@ body {
   justify-content: center;
 }
 
-#destination-form-container {
-  grid-row: 1/-1;
-  grid-column: 1/-1;
+.destination-form-container {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+
+#destination-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#destination-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .button {
@@ -88,7 +128,6 @@ body {
   background-color: white;
   border-radius: 1em;
   height: 2em;
-  width: 10em;
   font-size: 2vh;
 }
 
@@ -116,13 +155,13 @@ body {
 
 /* inputs */
 
-.location-search-input {
+#autocomplete-input {
   width: 20em;
   height: 2em;
   box-sizing: border-box;
-  /* border: 2px solid #ccc;
-  border-radius: 4px; */
-  font-size: 1.5vh;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 2vh;
   background-color: white;
   /* background-image: url("searchicon.png"); */
   /* background-position: 10px 10px; */
@@ -133,8 +172,25 @@ body {
   transition: all 0.5s;
 }
 
-.location-search-input:focus {
+#autocomplete-input:focus {
   width: 40em;
+}
+
+#autocomplete-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#autocomplete-drop-down {
+  font-size: 2vh;
+  width: 40em;
+  margin-top: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .destination-card {
