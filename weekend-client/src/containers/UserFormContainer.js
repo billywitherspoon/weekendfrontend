@@ -117,7 +117,7 @@ class UserFormContainer extends Component {
 		}
 	};
 	render() {
-		return <fragment>{this.renderUserForm()}</fragment>;
+		return <Fragment>{this.renderUserForm()}</Fragment>;
 	}
 }
 

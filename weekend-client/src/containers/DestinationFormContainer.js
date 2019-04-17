@@ -1,4 +1,4 @@
-import React, { Component, PureComponent } from 'react';
+import React, { Component, Fragment } from 'react';
 import AutocompleteSearch from '../components/AutocompleteSearch';
 import AddDestinationTagForm from '../components/AddDestinationTagForm';
 
@@ -99,15 +99,11 @@ class DestinationFormContainer extends Component {
 		// this.setState({ addTags: true, tagCount: 0 });
 	};
 
-	renderTags = () => {
-		return;
-	};
-
 	render() {
 		return (
-			<div className="destination-form-container">
+			<Fragment>
 				{!this.state.destination ? (
-					<div className="destination-form-container">
+					<div className="autocomplete-form-container">
 						<AutocompleteSearch
 							setLatLng={this.setLatLng}
 							setDestination={this.setDestination}
@@ -117,22 +113,29 @@ class DestinationFormContainer extends Component {
 				) : (
 					<div className="destination-form-container">
 						<div id="destination-display">
-							<h3>{this.state.destination}</h3>
-							{this.renderTags}
-							{this.state.tags.map((tag) => <h5>{tag}</h5>)}
-							<h5># {this.state.currentTag}</h5>
+							<div id="destination-title">{this.state.destination}</div>
+							<div id="tag-container">
+								{this.state.tags.map((tag) => <div className="hashtag">{tag}</div>)}
+								<div className="hashtag">#{this.state.currentTag}</div>
+							</div>
 						</div>
 						<AddDestinationTagForm
 							currentTag={this.state.currentTag}
 							persistTag={this.persistTag}
 							updateTagName={this.updateTagName}
 						/>
-						<button className="button" onClick={(ev) => this.handleDestinationFormSubmit(ev)}>
-							ADD TO MY FAVORITES
-						</button>
+						<div className="flex-center">
+							<button
+								className="button"
+								id="add-to-favorite-button"
+								onClick={(ev) => this.handleDestinationFormSubmit(ev)}
+							>
+								ADD TO MY FAVORITES
+							</button>
+						</div>
 					</div>
 				)}
-			</div>
+			</Fragment>
 		);
 	}
 }

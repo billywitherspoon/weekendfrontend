@@ -2,10 +2,16 @@ import React from 'react';
 
 const AddDestinationTagForm = (props) => {
 	return (
-		<form onSubmit={(ev) => props.persistTag(ev)}>
-			<label>Add a Tag! </label>
-			<input type="text" value={props.currentTag} name="currentTag" onChange={(ev) => props.updateTagName(ev)} />
-			<input type="submit" value="Add" />
+		<form id="add-tag-form" onSubmit={(ev) => props.persistTag(ev)}>
+			<input
+				type="text"
+				className="input-box"
+				placeholder="Add a Tag!"
+				value={props.currentTag}
+				name="currentTag"
+				onChange={(ev) => props.updateTagName(ev)}
+			/>
+			<input class="button" type="submit" id="add-tag=button" value="Add" />
 		</form>
 	);
 };

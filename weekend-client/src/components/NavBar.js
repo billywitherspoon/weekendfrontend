@@ -8,7 +8,7 @@ const NavBar = (props) => {
 				Add Destination
 			</div>
 			<div className="nav-bar-text">{currentUser.firstName + ' ' + currentUser.lastName}</div>
-			<div className="nav-bar-text" id="logout-button" onClick={props.logoutUser}>
+			<div className="nav-bar-text" onClick={props.logoutUser}>
 				Logout
 			</div>
 		</div>

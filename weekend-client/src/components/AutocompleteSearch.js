@@ -47,19 +47,16 @@ class AutocompleteSearch extends React.Component {
 						<div id="autocomplete-drop-down">
 							{loading && <div />}
 							{suggestions.map((suggestion) => {
-								const className = suggestion.active ? 'suggestion-item--active' : 'suggestion-item';
+								const className = suggestion.active ? 'suggestion-item-active' : 'suggestion-item';
 								// inline style for demonstration purpose
 								// const searchOptions = {
 								// 	location: new google.maps.LatLng()
 								// };
-								const style = suggestion.active
-									? { backgroundColor: '#fafafa', cursor: 'pointer' }
-									: { backgroundColor: '#ffffff', cursor: 'pointer' };
+
 								return (
 									<div
 										{...getSuggestionItemProps(suggestion, {
-											className,
-											style
+											className
 										})}
 									>
 										<span>{suggestion.formattedSuggestion.mainText}</span>
