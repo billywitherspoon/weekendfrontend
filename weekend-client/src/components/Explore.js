@@ -9,11 +9,7 @@ class Explore extends Component {
       <div>
       On explore page.
       <button onClick={() => this.props.toggleView()}>View Profile</button>
-      <DestinationFormContainer
-        currentUser={this.props.currentUser}
-        loginUser={this.props.loginUser}
-        logoutUser={this.props.logoutUser}
-      />
+    
       {this.props.allDestinations.map(destination => {
         return <DestinationCard destination={destination}/>
       })}
