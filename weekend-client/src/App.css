@@ -131,3 +131,8 @@ body {
 .location-search-input:focus {
   width: 40em;
 }
+
+.destination-card {
+  height: 300px;
+  width: 200px;
+}

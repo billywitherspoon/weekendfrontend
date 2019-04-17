@@ -5,7 +5,7 @@ class DestinationCard extends Component {
 
     let recentForecast = this.props.destination.forecasts
     return (
-      <div>
+      <div  className="destination-card">
         <h2>{this.props.destination.name}</h2>
         <h5>{recentForecast[recentForecast.length -1].data.daily.summary}</h5>
         <p>{recentForecast[recentForecast.length -1].data.daily.icon}</p>
