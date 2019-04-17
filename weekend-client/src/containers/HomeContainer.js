@@ -28,6 +28,7 @@ class HomeContainer extends Component {
 					addDestination={this.addDestination}
 					currentUser={this.props.currentUser}
 					logoutUser={this.props.logoutUser}
+					allDestinations={this.state.allDestinations}
 				/>
 			);
 		}
