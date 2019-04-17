@@ -4,6 +4,7 @@ import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-au
 class AutocompleteSearch extends React.Component {
 	constructor(props) {
 		super(props);
+		this.currentUser = JSON.parse(sessionStorage.getItem('user'));
 		this.state = { address: '' };
 	}
 
@@ -36,14 +37,14 @@ class AutocompleteSearch extends React.Component {
 		return (
 			<PlacesAutocomplete value={this.state.address} onChange={this.handleChange} onSelect={this.handleSelect}>
 				{({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-					<div>
+					<div id="autocomplete-container">
 						<input
 							{...getInputProps({
 								placeholder: 'Type a Destination',
-								className: 'location-search-input'
+								id: 'autocomplete-input'
 							})}
 						/>
-						<div id="autocomplete-dropdown-container">
+						<div id="autocomplete-drop-down">
 							{loading && <div />}
 							{suggestions.map((suggestion) => {
 								const className = suggestion.active ? 'suggestion-item--active' : 'suggestion-item';

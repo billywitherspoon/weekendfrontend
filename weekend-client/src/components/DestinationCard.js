@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 
 class DestinationCard extends Component {
 
+constructor(props) {
+  super(props);
+  this.currentUser = JSON.parse(sessionStorage.getItem('user'));
+  this.state = {};
+}
       determineDayOfWeek = () => {
         let today = new Date()
         let dayOfWeek = today.getDay()

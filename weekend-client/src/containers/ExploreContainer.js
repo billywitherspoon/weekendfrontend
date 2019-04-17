@@ -6,6 +6,7 @@ import DestinationCard from '../components/DestinationCard';
 class ExploreContainer extends Component {
 	constructor(props) {
 		super(props);
+		this.currentUser = JSON.parse(sessionStorage.getItem('user'));
 		this.state = { allDestinations: '' };
 	}
 

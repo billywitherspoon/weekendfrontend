@@ -7,7 +7,7 @@ import ExploreContainer from './ExploreContainer';
 class UserPageContainer extends Component {
 	constructor(props) {
 		super(props);
-
+		this.currentUser = JSON.parse(sessionStorage.getItem('user'));
 		this.state = {
 			viewProfile: true,
 			selectedLocation: '',
@@ -29,27 +29,25 @@ class UserPageContainer extends Component {
 	};
 
 	toggleBackgroundBlur = () => {
-		// let nonFormElements = document.getElementsByClassName('non-form-element');
-		// if (this.state.showDestinationFormContainer && nonFormElements.length) {
-		// 	debugger;
-		// 	nonFormElements.forEach((element) => {
-		// 		element.classList.add('blurred');
-		// 	});
-		// } else if (nonFormElements.length) {
-		// 	debugger;
-		// 	nonFormElements.forEach((element) => {
-		// 		element.classList.remove('blurred');
-		// 	});
-		// }
+		let nonFormElements = document.getElementsByClassName('non-form-element');
+		if (this.state.showDestinationFormContainer && nonFormElements.length) {
+			for (let i = 0; i < nonFormElements.length; i++) {
+				nonFormElements[i].classList.add('blurred');
+			}
+		} else if (nonFormElements.length) {
+			for (let i = 0; i < nonFormElements.length; i++) {
+				nonFormElements[i].classList.remove('blurred');
+			}
+		}
 	};
 
 	renderDestinationFormContainer = () => {
 		this.toggleBackgroundBlur();
 		if (this.state.showDestinationFormContainer) {
 			return (
-				<div id="user-form-container">
+				<span id="destination-form-background">
 					<DestinationFormContainer />
-				</div>
+				</span>
 			);
 		} else {
 			return null;
@@ -60,22 +58,13 @@ class UserPageContainer extends Component {
 		return (
 			<div id="user-page-container">
 				{this.renderDestinationFormContainer()}
-				<NavBar
-					addDestination={this.addDestination}
-					currentUser={this.props.currentUser}
-					logoutUser={this.props.logoutUser}
-				/>
+				<NavBar addDestination={this.addDestination} logoutUser={this.props.logoutUser} />
 				{this.state.viewProfile ? (
-					<ProfileContainer
-						toggleView={this.toggleView}
-						addDestination={this.addDestination}
-						currentUser={this.props.currentUser}
-					/>
+					<ProfileContainer toggleView={this.toggleView} addDestination={this.addDestination} />
 				) : (
 					<ExploreContainer
 						toggleView={this.toggleView}
 						addDestination={this.addDestination}
-						currentUser={this.props.currentUser}
 						allDestinations={this.props.allDestinations}
 					/>
 				)}
