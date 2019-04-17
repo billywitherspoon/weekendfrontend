@@ -27,28 +27,29 @@ class DestinationFormContainer extends Component {
 		ev.preventDefault();
 		console.log('Handling form submit.');
 
-    let destinationFormData = {
-      destination: {
-        latitude: this.state.latLng.lat,
-        longitude: this.state.latLng.lng,
-        name: this.state.destination,
-        tags: this.state.tags,
-        user_id: 1}
-      
-    }
+		let destinationFormData = {
+			destination: {
+				latitude: this.state.latLng.lat,
+				longitude: this.state.latLng.lng,
+				name: this.state.destination,
+				tags: this.state.tags,
+				user_id: 1
+			}
+		};
 
-    console.log("DATA: ", destinationFormData)
+		console.log('DATA: ', destinationFormData);
 
-    fetch("http://localhost:3000/api/v1/destinations", {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(destinationFormData)
-      }).then(res => res.json())
-      .then(json => console.log(json))
-      .catch(error => console.error('Error', error))
+		fetch('http://localhost:3000/api/v1/destinations', {
+			method: 'POST',
+			headers: {
+				Accept: 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(destinationFormData)
+		})
+			.then((res) => res.json())
+			.then((json) => console.log(json))
+			.catch((error) => console.error('Error', error));
 	};
 
 	setLatLng = (latLng) => {
@@ -88,9 +89,8 @@ class DestinationFormContainer extends Component {
 
 	render() {
 		return (
-			<div id="destination-form-container">
-				<h3>Add New Destination:</h3>
-				<form onSubmit={(ev) => this.handleSubmit(ev)}>
+			<div className="user-form-container">
+				<form className="user-form" onSubmit={(ev) => this.handleSubmit(ev)}>
 					{this.state.destination === '' ? (
 						<AutocompleteSearch setLatLng={this.setLatLng} setDestination={this.setDestination} />
 					) : (
@@ -102,6 +102,7 @@ class DestinationFormContainer extends Component {
 					{this.renderTagForm()}
 					{this.state.addTags ? (
 						<button
+							className="button"
 							onClick={(ev) => {
 								this.addNewTagForm(ev);
 							}}
@@ -110,7 +111,7 @@ class DestinationFormContainer extends Component {
 						</button>
 					) : null}
 					<br />
-					<input type="submit" />
+					<input type="submit" value="ADD DESTINATION" className="button" />
 				</form>
 			</div>
 		);

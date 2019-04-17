@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import LoginForm from '../components/LoginForm.js';
 import SignUpForm from '../components/SignUpForm.js';
+import DestinationFormContainer from './DestinationFormContainer';
 
 class UserFormContainer extends Component {
 	constructor(props) {
@@ -73,6 +74,9 @@ class UserFormContainer extends Component {
 						alert(user_json.error);
 					} else {
 						this.props.loginUser(user_json);
+						this.setState({
+							signUpActive: false
+						});
 					}
 				})
 				.catch((error) => console.error('Error', error));
@@ -82,7 +86,7 @@ class UserFormContainer extends Component {
 	};
 
 	renderUserForm = () => {
-		if (this.state.signUpActive) {
+		if (!this.props.currentUser && this.state.signUpActive) {
 			return (
 				<SignUpForm
 					currentUser={this.props.currentUser}
@@ -96,7 +100,7 @@ class UserFormContainer extends Component {
 					toggleSignUp={this.toggleSignUp}
 				/>
 			);
-		} else {
+		} else if (!this.props.currentUser) {
 			return (
 				<LoginForm
 					currentUser={this.props.currentUser}
@@ -108,6 +112,10 @@ class UserFormContainer extends Component {
 					toggleSignUp={this.toggleSignUp}
 				/>
 			);
+		} else if (this.props.showDestinationFormContainer) {
+			return <DestinationFormContainer />;
+		} else {
+			return null;
 		}
 	};
 
@@ -115,5 +123,5 @@ class UserFormContainer extends Component {
 		return <div id="user-form-container">{this.renderUserForm()}</div>;
 	}
 }
-
+//add this line back in to get login stuff back
 export default UserFormContainer;

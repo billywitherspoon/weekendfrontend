@@ -9,7 +9,8 @@ class UserPageContainer extends Component {
 		super(props);
 
 		this.state = {
-			viewProfile: true
+			viewProfile: true,
+			selectedLocation: ''
 		};
 	}
 
@@ -22,17 +23,18 @@ class UserPageContainer extends Component {
 
 	render() {
 		return (
-			<div>
+			<div id="user-page-container">
 				<NavBar currentUser={this.props.currentUser} logoutUser={this.props.logoutUser} />
-				Hello.
 				{this.state.viewProfile ? (
 					<Profile
+						className="destination-list"
 						toggleView={this.toggleView}
 						addDestination={this.addDestination}
 						currentUser={this.props.currentUser}
 					/>
 				) : (
 					<Explore
+						className="destination-list"
 						toggleView={this.toggleView}
 						addDestination={this.addDestination}
 						currentUser={this.props.currentUser}
