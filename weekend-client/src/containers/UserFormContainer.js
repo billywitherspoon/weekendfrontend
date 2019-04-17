@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import LoginForm from '../components/LoginForm.js';
 import SignUpForm from '../components/SignUpForm.js';
 import DestinationFormContainer from './DestinationFormContainer';
@@ -88,39 +88,47 @@ class UserFormContainer extends Component {
 	renderUserForm = () => {
 		if (!this.props.currentUser && this.state.signUpActive) {
 			return (
-				<SignUpForm
-					currentUser={this.props.currentUser}
-					loginUser={this.props.loginUser}
-					logoutUser={this.props.logoutUser}
-					handleNameChange={this.handleNameChange}
-					username={this.state.username}
-					firstName={this.state.firstName}
-					lastName={this.state.lastName}
-					handleSignUpSubmit={this.handleSignUpSubmit}
-					toggleSignUp={this.toggleSignUp}
-				/>
+				<div id="user-form-container">
+					<SignUpForm
+						currentUser={this.props.currentUser}
+						loginUser={this.props.loginUser}
+						logoutUser={this.props.logoutUser}
+						handleNameChange={this.handleNameChange}
+						username={this.state.username}
+						firstName={this.state.firstName}
+						lastName={this.state.lastName}
+						handleSignUpSubmit={this.handleSignUpSubmit}
+						toggleSignUp={this.toggleSignUp}
+					/>
+				</div>
 			);
 		} else if (!this.props.currentUser) {
 			return (
-				<LoginForm
-					currentUser={this.props.currentUser}
-					loginUser={this.props.loginUser}
-					logoutUser={this.props.logoutUser}
-					handleNameChange={this.handleNameChange}
-					handleLoginSubmit={this.handleLoginSubmit}
-					username={this.state.username}
-					toggleSignUp={this.toggleSignUp}
-				/>
+				<div id="user-form-container">
+					<LoginForm
+						currentUser={this.props.currentUser}
+						loginUser={this.props.loginUser}
+						logoutUser={this.props.logoutUser}
+						handleNameChange={this.handleNameChange}
+						handleLoginSubmit={this.handleLoginSubmit}
+						username={this.state.username}
+						toggleSignUp={this.toggleSignUp}
+					/>
+				</div>
 			);
 		} else if (this.props.showDestinationFormContainer) {
-			return <DestinationFormContainer />;
+			return (
+				<div id="user-form-container">
+					<DestinationFormContainer />
+				</div>
+			);
 		} else {
 			return null;
 		}
 	};
 
 	render() {
-		return <div id="user-form-container"> {this.renderUserForm()}</div>;
+		return <fragment>{this.renderUserForm()}</fragment>;
 	}
 }
 //add this line back in to get login stuff back
