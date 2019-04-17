@@ -8,7 +8,6 @@ class DestinationFormContainer extends Component {
 
 		this.state = {
 			userInput: '',
-			sessionToken: this.createSessionToken(),
 			latLng: {},
 			addTags: false,
 			tags: [],
@@ -18,12 +17,6 @@ class DestinationFormContainer extends Component {
 			photos: []
 		};
 	}
-
-	createSessionToken = () => {
-		let token = Math.random() * 1000000000000000000;
-		console.log('TOKEN:', token);
-		return token;
-	};
 
 	handleSubmit = (ev) => {
 		ev.preventDefault();
@@ -101,7 +94,7 @@ class DestinationFormContainer extends Component {
 
 	render() {
 		return (
-			<form className="user-form" onSubmit={(ev) => this.handleSubmit(ev)}>
+			<form className="destination-form" onSubmit={(ev) => this.handleSubmit(ev)}>
 				{this.state.destination === '' ? (
 					<AutocompleteSearch
 						setLatLng={this.setLatLng}
@@ -133,3 +126,11 @@ class DestinationFormContainer extends Component {
 }
 
 export default DestinationFormContainer;
+
+// sessionToken: this.createSessionToken(),
+
+// createSessionToken = () => {
+// 	let token = Math.random() * 1000000000000000000;
+// 	console.log('TOKEN:', token);
+// 	return token;
+// };

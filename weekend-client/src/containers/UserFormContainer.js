@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import LoginForm from '../components/LoginForm.js';
 import SignUpForm from '../components/SignUpForm.js';
-import DestinationFormContainer from './DestinationFormContainer';
 
 class UserFormContainer extends Component {
 	constructor(props) {
@@ -116,20 +115,11 @@ class UserFormContainer extends Component {
 					/>
 				</div>
 			);
-		} else if (this.props.showDestinationFormContainer) {
-			return (
-				<div id="user-form-container">
-					<DestinationFormContainer />
-				</div>
-			);
-		} else {
-			return null;
 		}
 	};
-
 	render() {
 		return <fragment>{this.renderUserForm()}</fragment>;
 	}
 }
-//add this line back in to get login stuff back
+
 export default UserFormContainer;
