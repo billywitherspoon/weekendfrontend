@@ -1,7 +1,9 @@
 import React from 'react';
 
 const SignUpForm = (props) => {
-	let currentUser = JSON.parse(sessionStorage.getItem('user'));
+	// let currentUser = JSON.parse(sessionStorage.getItem('user'));
+	let currentUser = sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user')) : null;
+
 	return (
 		<form className="user-form" onSubmit={(ev) => props.handleSignUpSubmit(ev)}>
 			<label>Enter Username</label>
