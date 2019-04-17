@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 
 import HomeContainer from './containers/HomeContainer.js';
+import UserPageContainer from './containers/UserPageContainer.js';
+import HomeRouter from './containers/HomeRouter.js';
 
 class App extends Component {
 	constructor() {
@@ -43,21 +45,27 @@ class App extends Component {
 		this.setState({
 			loggedIn: true
 		});
+    //route to home page
 	};
 
 	logoutUser = () => {
 		sessionStorage.removeItem('user');
 		console.log('user logged out');
+    debugger;
 		this.setState({
 			loggedIn: false
 		});
 	};
-
+       // <HomeContainer loginUser={this.loginUser} logoutUser={this.logoutUser} />
 	render() {
 		return (
 			<div>
-				<HomeContainer loginUser={this.loginUser} logoutUser={this.logoutUser} />
-			</div>
+        {this.state.loggedIn?
+        <UserPageContainer logoutUser={this.logoutUser} />
+        :
+        <HomeRouter loggedIn={this.state.loggedIn} loginUser={this.loginUser} logoutUser={this.logoutUser}/>
+        }
+      </div>
 		);
 	}
 }

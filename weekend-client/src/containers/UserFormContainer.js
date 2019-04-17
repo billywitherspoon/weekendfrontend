@@ -5,7 +5,8 @@ import SignUpForm from '../components/SignUpForm.js';
 class UserFormContainer extends Component {
 	constructor(props) {
 		super(props);
-		this.currentUser = JSON.parse(sessionStorage.getItem('user'));
+		// this.currentUser = JSON.parse(sessionStorage.getItem('user'));
+		this.currentUser = sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user')) : null;
 		this.state = {
 			username: '',
 			firstName: '',
@@ -86,6 +87,7 @@ class UserFormContainer extends Component {
 	};
 
 	renderUserForm = () => {
+		console.log('renderuserform fired!', this.currentUser)
 		if (!this.currentUser && this.state.signUpActive) {
 			return (
 				<div id="user-form-container">
@@ -114,6 +116,10 @@ class UserFormContainer extends Component {
 					/>
 				</div>
 			);
+		} else {
+			return (
+				<h1>Component showed</h1>
+			)
 		}
 	};
 	render() {

@@ -271,4 +271,15 @@ body {
 .destination-card {
   height: 300px;
   width: 200px;
+  border: solid;
+}
+
+.destination-card-image {
+  height: 100px;
+}
+
+.destination-list {
+  color: blue;
+  background-color: grey;
+  display: grid | inline-grid;
 }
