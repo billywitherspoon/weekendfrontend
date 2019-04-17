@@ -2,7 +2,7 @@ import React from 'react';
 
 const NavBar = (props) => {
 	return (
-		<div className="nav-bar">
+		<div className="nav-bar" className="non-form-element">
 			<button className="button" onClick={() => props.addDestination()}>
 				Add Destination
 			</button>
