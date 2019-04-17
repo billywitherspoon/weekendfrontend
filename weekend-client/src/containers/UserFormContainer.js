@@ -120,7 +120,7 @@ class UserFormContainer extends Component {
 	};
 
 	render() {
-		return <div id="user-form-container">{this.renderUserForm()}</div>;
+		return <div id="user-form-container"> {this.renderUserForm()}</div>;
 	}
 }
 //add this line back in to get login stuff back

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import UserFormContainer from './UserFormContainer.js';
 import UserPageContainer from './UserPageContainer';
-// import DestinationFormContainer from './DestinationFormContainer';
 
 class HomeContainer extends Component {
 	constructor(props) {
@@ -10,8 +9,11 @@ class HomeContainer extends Component {
 			showDestinationFormContainer: false,
 			allDestinations: []
 		};
-		this.fetchDestinations();
 	}
+
+	componentDidMount = () => {
+		this.fetchDestinations();
+	};
 
 	fetchDestinations = () => {
 		fetch('http://localhost:3000/api/v1/destinations').then((res) => res.json()).then((json) => {
@@ -21,8 +23,20 @@ class HomeContainer extends Component {
 
 	renderUserPageContainer = () => {
 		if (this.props.currentUser) {
-			return <UserPageContainer currentUser={this.props.currentUser} logoutUser={this.props.logoutUser} />;
+			return (
+				<UserPageContainer
+					addDestination={this.addDestination}
+					currentUser={this.props.currentUser}
+					logoutUser={this.props.logoutUser}
+				/>
+			);
 		}
+	};
+
+	addDestination = () => {
+		this.setState({
+			showDestinationFormContainer: true
+		});
 	};
 
 	render() {

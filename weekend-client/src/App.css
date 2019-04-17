@@ -38,7 +38,7 @@ body {
   grid-column: 1 / -1;
 }
 
-.user-form-container {
+#user-form-container {
   grid-row: 3 / 9;
   grid-column: 4 / 10;
   display: flex;

@@ -101,35 +101,33 @@ class DestinationFormContainer extends Component {
 
 	render() {
 		return (
-			<div className="user-form-container">
-				<form className="user-form" onSubmit={(ev) => this.handleSubmit(ev)}>
-					{this.state.destination === '' ? (
-						<AutocompleteSearch
-							setLatLng={this.setLatLng}
-							setDestination={this.setDestination}
-							setPlaceId={this.setPlaceId}
-						/>
-					) : (
-						<div>
-							<h2>{this.state.destination}</h2>
-							<h3>{this.state.tags.join(' ')}</h3>
-						</div>
-					)}
-					{this.renderTagForm()}
-					{this.state.addTags ? (
-						<button
-							className="button"
-							onClick={(ev) => {
-								this.addNewTagForm(ev);
-							}}
-						>
-							Add Tag
-						</button>
-					) : null}
-					<br />
-					<input type="submit" value="ADD DESTINATION" className="button" />
-				</form>
-			</div>
+			<form className="user-form" onSubmit={(ev) => this.handleSubmit(ev)}>
+				{this.state.destination === '' ? (
+					<AutocompleteSearch
+						setLatLng={this.setLatLng}
+						setDestination={this.setDestination}
+						setPlaceId={this.setPlaceId}
+					/>
+				) : (
+					<div>
+						<h2>{this.state.destination}</h2>
+						<h3>{this.state.tags.join(' ')}</h3>
+					</div>
+				)}
+				{this.renderTagForm()}
+				{this.state.addTags ? (
+					<button
+						className="button"
+						onClick={(ev) => {
+							this.addNewTagForm(ev);
+						}}
+					>
+						Add Tag
+					</button>
+				) : null}
+				<br />
+				<input type="submit" value="ADD DESTINATION" className="button" />
+			</form>
 		);
 	}
 }

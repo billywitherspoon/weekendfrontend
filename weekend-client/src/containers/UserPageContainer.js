@@ -24,7 +24,11 @@ class UserPageContainer extends Component {
 	render() {
 		return (
 			<div id="user-page-container">
-				<NavBar currentUser={this.props.currentUser} logoutUser={this.props.logoutUser} />
+				<NavBar
+					addDestination={this.props.addDestination}
+					currentUser={this.props.currentUser}
+					logoutUser={this.props.logoutUser}
+				/>
 				{this.state.viewProfile ? (
 					<Profile
 						className="destination-list"
@@ -38,7 +42,7 @@ class UserPageContainer extends Component {
 						toggleView={this.toggleView}
 						addDestination={this.addDestination}
 						currentUser={this.props.currentUser}
-            allDestinations={this.props.allDestinations}
+						allDestinations={this.props.allDestinations}
 					/>
 				)}
 			</div>
