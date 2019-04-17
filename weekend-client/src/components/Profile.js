@@ -8,7 +8,14 @@ class Profile extends Component {
 		this.state = {
       showDestinationForm: false
     };
+    this.fetchFavorites()
 	}
+
+  fetchFavorites = () => {
+    fetch(`http://localhost:3000/api/v1/favorites/user/${this.props.currentUser.id}`)
+    .then(res => res.json())
+    .then(json => console.log(json))
+  }
 
   addDestination = () => {
     this.setState((prevState) => {

@@ -13,7 +13,9 @@ class DestinationFormContainer extends Component {
 			addTags: false,
 			tags: [],
 			tagCount: 0,
-			destination: ''
+			destination: '',
+			placeId: '',
+			photos: []
 		};
 	}
 
@@ -63,6 +65,16 @@ class DestinationFormContainer extends Component {
 		this.setState({ destination });
 	};
 
+	setPlaceId = (placeId) => {
+		this.setState({ placeId });
+		// fetch(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&fields=photo&key=AIzaSyAntpQHNnQ1VhJKBJ8ikMKb7HZ-g83JxKA`)
+		fetch(
+			'https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4&fields=name,rating,formatted_phone_number&key=AIzaSyAntpQHNnQ1VhJKBJ8ikMKb7HZ-g83JxKA'
+		)
+			.then((res) => res.json())
+			.then((json) => console.log('IMGS?: ', json));
+	};
+
 	renderTagForm = () => {
 		let tempArray = [];
 		for (let i = 0; i < this.state.tagCount; i++) {
@@ -92,7 +104,11 @@ class DestinationFormContainer extends Component {
 			<div className="user-form-container">
 				<form className="user-form" onSubmit={(ev) => this.handleSubmit(ev)}>
 					{this.state.destination === '' ? (
-						<AutocompleteSearch setLatLng={this.setLatLng} setDestination={this.setDestination} />
+						<AutocompleteSearch
+							setLatLng={this.setLatLng}
+							setDestination={this.setDestination}
+							setPlaceId={this.setPlaceId}
+						/>
 					) : (
 						<div>
 							<h2>{this.state.destination}</h2>
