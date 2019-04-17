@@ -117,6 +117,8 @@ class UserFormContainer extends Component {
 				</div>
 			);
 		} else if (this.props.showDestinationFormContainer) {
+			let userPageContainer = document.getElementById('user-page-container');
+			userPageContainer.classList.add('blurred');
 			return (
 				<div id="user-form-container">
 					<DestinationFormContainer />
