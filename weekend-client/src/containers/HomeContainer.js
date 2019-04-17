@@ -21,7 +21,11 @@ class HomeContainer extends Component {
 
 	renderUserPageContainer = () => {
 		if (this.props.currentUser) {
-			return <UserPageContainer currentUser={this.props.currentUser} logoutUser={this.props.logoutUser} />;
+			return <UserPageContainer
+				currentUser={this.props.currentUser}
+				logoutUser={this.props.logoutUser}
+				allDestinations={this.state.allDestinations}
+			/>
 		}
 	};
 
