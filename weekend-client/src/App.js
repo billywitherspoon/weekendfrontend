@@ -51,9 +51,9 @@ class App extends Component {
 	logoutUser = () => {
 		sessionStorage.removeItem('user');
 		console.log('user logged out');
+    debugger;
 		this.setState({
 			loggedIn: false
-
 		});
 	};
        // <HomeContainer loginUser={this.loginUser} logoutUser={this.logoutUser} />
