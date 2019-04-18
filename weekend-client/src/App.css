@@ -287,6 +287,9 @@ body {
   height: 20vh;
   width: 100%;
   border: solid;
+  border-color: grey;
+  border-width: 0.25vmin;
+  border-radius: 2vmin;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -303,8 +306,6 @@ body {
 }
 
 .destination-list {
-  color: blue;
-  background-color: grey;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
