@@ -118,7 +118,9 @@ font-family: 'Enriqueta', serif; */
   border-style: solid;
   border-width: 0.25vmin;
   border-radius: 3vmin;
-  border-color: black;
+  border-color: grey;
+  /* box-shadow: 0.25vmin 0.25vmin grey; */
+  box-shadow: 0 0.5vmin 1vmin 0 rgba(0, 0, 0, 0.2), 0 1vmin 2vmin 0 rgba(0, 0, 0, 0.19);
   display: grid;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   grid-template-columns: 1fr;
@@ -138,7 +140,8 @@ font-family: 'Enriqueta', serif; */
   border-style: solid;
   border-width: 0.25vmin;
   border-radius: 3vmin;
-  border-color: black;
+  border-color: white;
+  box-shadow: 5px 10px;
   grid-column: 2 / 7;
   grid-row: 3 / 6;
   display: grid;
@@ -338,6 +341,7 @@ font-family: 'Enriqueta', serif; */
   justify-content: space-around;
   margin: 2vmin;
   flex-wrap: wrap;
+  box-shadow: 0 0.25vmin 0.5vmin 0 rgba(0, 0, 0, 0.2), 0 0.5vmin 1vmin 0 rgba(0, 0, 0, 0.19);
 }
 
 .dest-card-title {
@@ -348,21 +352,21 @@ font-family: 'Enriqueta', serif; */
   height: 100px;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1200px) {
   .destination-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
 }
 
-@media only screen and (min-width: 901px), (max-width: 1300px) {
+@media only screen and (min-width: 1201px) and (max-width: 1500px) {
   .destination-list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
 
-@media only screen and (min-width: 1301px) {
+@media only screen and (min-width: 1501px) {
   .destination-list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -371,4 +375,10 @@ font-family: 'Enriqueta', serif; */
 
 .weather-icon {
   height: 6vh;
+}
+
+.weather-card-text {
+  font-size: 2vh;
+  text-align: center;
+  padding-bottom: 1vmin;
 }

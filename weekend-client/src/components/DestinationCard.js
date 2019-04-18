@@ -1,6 +1,5 @@
-
 import React, { Component } from 'react';
-import WeatherCard from './WeatherCard'
+import WeatherCard from './WeatherCard';
 
 class DestinationCard extends Component {
 	constructor(props) {
@@ -8,7 +7,6 @@ class DestinationCard extends Component {
 		this.currentUser = JSON.parse(sessionStorage.getItem('user'));
 		this.state = {};
 	}
-
 
 	render() {
 		let forecast = this.props.destination.forecasts[this.props.destination.forecasts.length - 1].data;
@@ -18,8 +16,8 @@ class DestinationCard extends Component {
 					<div className="dest-card-title">{this.props.destination.name.split(',')[0]}</div>
 
 					<div className="weather-icons">
-						THIS WEEKEND'S FORECAST:
-						<WeatherCard destinationForecast={forecast}/>
+						<div className="weather-card-text">This Weekend's Forecast</div>
+						<WeatherCard destinationForecast={forecast} />
 					</div>
 
 					{this.props.profileView ? null : (
