@@ -62,7 +62,6 @@ class ProfileContainer extends Component {
 
 	renderTagDivs = () => {
 		if (this.state.allTags && this.state.allFavorites) {
-			debugger;
 			return this.state.allTags.map((tag) => {
 				return (
 					<div id="user-tag-container">

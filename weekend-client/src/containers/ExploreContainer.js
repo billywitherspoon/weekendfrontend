@@ -26,7 +26,7 @@ class ExploreContainer extends Component {
 			return (
 				<div className="destination-list">
 					{this.state.allDestinations.map((destination) => {
-						return <DestinationCard destination={destination} addDestination={this.props.addDestination} />;
+						return <DestinationCard destination={destination} />;
 					})}
 				</div>
 			);
