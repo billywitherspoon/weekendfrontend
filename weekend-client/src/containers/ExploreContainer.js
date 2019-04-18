@@ -36,8 +36,6 @@ class ExploreContainer extends Component {
 	render() {
 		return (
 			<div id="explore-container" className="non-form-element">
-				On explore container page.
-				<button onClick={() => this.props.toggleView()}>View Profile</button>
 				{this.renderDestinationList()}
 			</div>
 		);

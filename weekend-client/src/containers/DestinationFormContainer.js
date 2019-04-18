@@ -120,14 +120,16 @@ class DestinationFormContainer extends Component {
 
 	persistTag = (ev) => {
 		ev.preventDefault();
-		let hashTag = '#' + this.state.currentTag.split(' ').join('');
-		this.setState((st) => {
-			return {
-				tags: st.tags.concat(hashTag),
-				currentTag: ''
-			};
-		});
-		console.log(hashTag);
+		if (this.state.currentTag) {
+			let hashTag = '#' + this.state.currentTag.split(' ').join('');
+			this.setState((st) => {
+				return {
+					tags: st.tags.concat(hashTag),
+					currentTag: ''
+				};
+			});
+		}
+
 		// this.setState({ addTags: true, tagCount: 0 });
 	};
 
@@ -145,7 +147,7 @@ class DestinationFormContainer extends Component {
 				) : (
 					<div className="destination-form-container">
 						<div id="destination-display">
-							<div id="destination-title">{this.state.destination}</div>
+							<div id="destination-title">{this.state.destination.split(',')[0]}</div>
 							<div id="tag-container">
 								{this.state.tags.map((tag) => <div className="hashtag">{tag}</div>)}
 								<div className="hashtag">#{this.state.currentTag}</div>
@@ -163,6 +165,15 @@ class DestinationFormContainer extends Component {
 								onClick={(ev) => this.handleDestinationFormSubmit(ev, '')}
 							>
 								ADD TO MY FAVORITES
+							</button>
+						</div>
+						<div className="flex-center">
+							<button
+								className="button"
+								id="cancel-destination-button"
+								onClick={this.props.hideDestinationForm}
+							>
+								CANCEL
 							</button>
 						</div>
 					</div>

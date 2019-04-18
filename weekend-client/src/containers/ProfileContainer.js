@@ -43,8 +43,6 @@ class ProfileContainer extends Component {
 	render() {
 		return (
 			<div id="profile-container" className="non-form-element">
-				On profile container page.
-				<button onClick={() => this.props.toggleView()}>Explore</button>
 				{this.renderDestinationList()}
 			</div>
 		);
