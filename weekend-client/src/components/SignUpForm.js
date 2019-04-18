@@ -6,24 +6,27 @@ const SignUpForm = (props) => {
 
 	return (
 		<form className="user-form" onSubmit={(ev) => props.handleSignUpSubmit(ev)}>
-			<label>Enter Username</label>
+			<div className="title">Enter Username</div>
 			<input
+				className="input-box"
 				type="text"
 				name="username"
 				placeholder=""
 				value={props.username}
 				onChange={props.handleNameChange}
 			/>
-			<label>First Name</label>
+			<div className="title">First Name</div>
 			<input
+				className="input-box"
 				type="text"
 				name="firstName"
 				placeholder=""
 				value={props.firstName}
 				onChange={props.handleNameChange}
 			/>
-			<label>Last Name</label>
+			<div className="title">Last Name</div>
 			<input
+				className="input-box"
 				type="text"
 				name="lastName"
 				placeholder=""
@@ -31,10 +34,10 @@ const SignUpForm = (props) => {
 				onChange={props.handleNameChange}
 			/>
 			<input className="button" type="submit" value="Sign Up" />
-			<div className="user-form-text">OR</div>
-			<div className="button" id="toggle-sign-up-button" onClick={props.toggleSignUp}>
+			<div className="title">OR</div>
+			<button className="button" id="toggle-sign-up-button" onClick={props.toggleSignUp}>
 				RETURN TO LOGIN
-			</div>
+			</button>
 		</form>
 	);
 };

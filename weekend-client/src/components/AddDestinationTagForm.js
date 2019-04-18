@@ -6,6 +6,7 @@ const AddDestinationTagForm = (props) => {
 			<input
 				type="text"
 				className="input-box"
+				id="tax-input-box"
 				placeholder="Add a Tag!"
 				value={props.currentTag}
 				name="currentTag"

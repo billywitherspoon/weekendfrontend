@@ -55,7 +55,10 @@ class UserPageContainer extends Component {
 		if (this.state.showDestinationFormContainer) {
 			return (
 				<span id="destination-form-background">
-					<DestinationFormContainer currentDestination={this.state.currentDestination} />
+					<DestinationFormContainer
+						hideDestinationForm={this.hideDestinationForm}
+						currentDestination={this.state.currentDestination}
+					/>
 				</span>
 			);
 		} else {

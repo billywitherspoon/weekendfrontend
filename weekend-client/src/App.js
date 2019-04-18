@@ -1,3 +1,5 @@
+// <HomeRouter loggedIn={this.state.loggedIn} loginUser={this.loginUser} logoutUser={this.logoutUser}/>
+// }
 import React, { Component } from 'react';
 import './App.css';
 
@@ -45,27 +47,25 @@ class App extends Component {
 		this.setState({
 			loggedIn: true
 		});
-    //route to home page
+		//route to home page
 	};
 
 	logoutUser = () => {
 		sessionStorage.removeItem('user');
 		console.log('user logged out');
-    debugger;
 		this.setState({
 			loggedIn: false
 		});
 	};
-       // <HomeContainer loginUser={this.loginUser} logoutUser={this.logoutUser} />
 	render() {
 		return (
 			<div>
-        {this.state.loggedIn?
-        <UserPageContainer logoutUser={this.logoutUser} />
-        :
-        <HomeRouter loggedIn={this.state.loggedIn} loginUser={this.loginUser} logoutUser={this.logoutUser}/>
-        }
-      </div>
+				{this.state.loggedIn ? (
+					<UserPageContainer logoutUser={this.logoutUser} />
+				) : (
+					<HomeContainer loginUser={this.loginUser} logoutUser={this.logoutUser} />
+				)}
+			</div>
 		);
 	}
 }

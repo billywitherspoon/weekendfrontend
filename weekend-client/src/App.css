@@ -81,15 +81,6 @@ body {
   align-items: center;
   justify-content: space-around;
   height: 50%;
-  background-color: green;
-}
-
-.user-form-text {
-  grid-row: 5;
-  grid-column: 1/6;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 #destination-form-background {
@@ -173,9 +164,12 @@ body {
   font-size: 2vh;
 }
 
+#tag-input-box {
+  margin-right: 2vw;
+}
+
 .input-box {
   font-size: 2vh;
-  margin-right: 2vw;
   text-align: center;
 }
 
@@ -267,6 +261,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.title {
+  font-size: 3vmin;
 }
 
 .sub-title {
