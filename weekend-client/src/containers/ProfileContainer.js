@@ -48,10 +48,13 @@ class ProfileContainer extends Component {
 		for (let i = 0; i < this.state.allFavorites.length; i++) {
 			for (let j = 0; j < this.state.allFavorites[i].tags.length; j++)
 				if (this.state.allFavorites[i].tags[j].id === tagId) {
+					let destination = this.state.allFavorites[i].destination;
+					destination.forecasts = this.state.allFavorites[i].forecasts;
 					destinationCardArray.push(
 						<DestinationCard
-							destination={this.state.allFavorites[i].destination}
+							destination={destination}
 							profileView={true}
+							forecasts={this.state.allFavorites[i].forecasts}
 							key={i}
 						/>
 					);
@@ -62,7 +65,6 @@ class ProfileContainer extends Component {
 
 	renderTagDivs = () => {
 		if (this.state.allTags && this.state.allFavorites) {
-			debugger;
 			return this.state.allTags.map((tag) => {
 				return (
 					<div id="user-tag-container">
