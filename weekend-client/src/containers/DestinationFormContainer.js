@@ -62,6 +62,7 @@ class DestinationFormContainer extends Component {
 	};
 
 	setPlaceId = (placeId) => {
+		console.log("PLACE ID", placeId)
 		this.setState({ placeId });
 		// fetch(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&fields=photo&key=AIzaSyAntpQHNnQ1VhJKBJ8ikMKb7HZ-g83JxKA`)
 		fetch(
