@@ -53,7 +53,7 @@ body {
 }
 
 .blurred {
-  filter: blur(2px);
+  filter: blur(3px);
 }
 
 .destination-set {
