@@ -34,8 +34,8 @@ class DestinationFormContainer extends Component {
 
 	addPlaceIdCurrentDestination = () => {
 		console.log('adding place id');
-		console.log('address', this.props.currentDestination.address);
-		geocodeByAddress(this.props.currentDestination.address)
+		console.log('address', this.props.currentDestination.name);
+		geocodeByAddress(this.props.currentDestination.name)
 			.then((results) => this.setPlaceId(results[0].place_id))
 			.catch((error) => console.error('Error', error));
 	};

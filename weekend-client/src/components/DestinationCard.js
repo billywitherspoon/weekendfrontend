@@ -50,19 +50,28 @@ class DestinationCard extends Component {
 		// })
 	};
 
+	// renderAddToFavoritesButton = () => {
+	// 	console.log('hit fav button');
+	// 	console.log('profileview', this.props.profileView);
+	// 	return
+	// 	);
+	// };
+
 	render() {
 		return (
 			<div className="flex-center">
 				<div className="destination-card">
 					<div className="dest-card-title">{this.props.destination.name.split(',')[0]}</div>
-					<button
-						className="button"
-						onClick={() => {
-							this.props.addDestination(this.props.destination);
-						}}
-					>
-						ADD TO FAVORITES
-					</button>
+					{this.props.profileView ? null : (
+						<button
+							className="button"
+							onClick={() => {
+								this.props.addDestination(this.props.destination);
+							}}
+						>
+							ADD TO FAVORITES
+						</button>
+					)}
 				</div>
 			</div>
 		);

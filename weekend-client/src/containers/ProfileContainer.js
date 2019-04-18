@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import DestinationFormContainer from './DestinationFormContainer';
+import DestinationCard from '../components/DestinationCard';
 
 class ProfileContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.currentUser = JSON.parse(sessionStorage.getItem('user'));
-		this.state = {};
+		this.state = { allFavorites: '' };
 	}
 
 	componentDidMount = () => {
@@ -15,22 +16,36 @@ class ProfileContainer extends Component {
 	fetchFavorites = () => {
 		fetch(`http://localhost:3000/api/v1/favorites/user/${this.currentUser.id}`)
 			.then((res) => res.json())
-			.then((json) => console.log(json));
+			.then((json) => {
+				let allFavorites = [];
+				for (let i = 0; i < json.length; i++) {
+					allFavorites.push(json[i].destination);
+				}
+				this.setState({
+					allFavorites: allFavorites
+				});
+				console.log(allFavorites);
+			});
 	};
 
-	// I think the add destination button will live in the nav bar.
-
-	// addDestination = () => {
-	// 	this.setState((prevState) => {
-	// 		return { showDestinationForm: !prevState.showDestinationForm };
-	// 	});
-	// };
+	renderDestinationList = () => {
+		if (this.state.allFavorites) {
+			return (
+				<div className="destination-list">
+					{this.state.allFavorites.map((destination) => {
+						return <DestinationCard destination={destination} profileView={true} />;
+					})}
+				</div>
+			);
+		}
+	};
 
 	render() {
 		return (
 			<div id="profile-container" className="non-form-element">
-				This is the profile container page.
+				On profile container page.
 				<button onClick={() => this.props.toggleView()}>Explore</button>
+				{this.renderDestinationList()}
 			</div>
 		);
 	}

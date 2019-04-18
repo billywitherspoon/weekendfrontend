@@ -114,6 +114,11 @@ body {
 }
 
 .destination-form-container {
+  background-color: white;
+  border-style: solid;
+  border-width: 0.25vmin;
+  border-radius: 3vmin;
+  border-color: black;
   grid-column: 2 / 7;
   grid-row: 3 / 6;
   display: grid;
