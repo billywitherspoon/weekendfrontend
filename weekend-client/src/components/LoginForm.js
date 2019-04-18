@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const LoginForm = (props) => {
 	// let currentUser = JSON.parse(sessionStorage.getItem('user'));
@@ -7,6 +7,7 @@ const LoginForm = (props) => {
 
 	return (
 		<form className="user-form" onSubmit={(ev) => props.handleLoginSubmit(ev)}>
+			<div className="app-name">Weekend Weather Watcher</div>
 			<div className="title">Enter Username</div>
 			<input
 				className="input-box"

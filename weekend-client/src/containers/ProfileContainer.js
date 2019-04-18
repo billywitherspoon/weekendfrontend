@@ -1,3 +1,6 @@
+// <button className="button" id="sunny-only-button">
+// 	SUNNY ONLY
+// </button>
 import React, { Component } from 'react';
 import DestinationFormContainer from './DestinationFormContainer';
 import DestinationCard from '../components/DestinationCard';
@@ -9,9 +12,16 @@ class ProfileContainer extends Component {
 		this.state = {
 			allFavorites: '',
 			userInfo: '',
-			allTags: ''
+			allTags: '',
+			sunnyOnly: false
 		};
 	}
+
+	sunnyToggle = () => {
+		this.setState((s) => {
+			return { sunnyOnly: !s.sunnyOnly };
+		});
+	};
 
 	componentDidMount = () => {
 		this.fetchFavorites();
@@ -19,7 +29,7 @@ class ProfileContainer extends Component {
 	};
 
 	fetchFavorites = () => {
-		fetch(`http://localhost:3000/api/v1/favorites/user/${this.currentUser.id}`)
+		fetch(`https://fathomless-citadel-93230.herokuapp.com/api/v1/favorites/user/${this.currentUser.id}`)
 			.then((res) => res.json())
 			.then((json) => {
 				// let allFavorites = [];
@@ -34,13 +44,15 @@ class ProfileContainer extends Component {
 	};
 
 	fetchUser = () => {
-		fetch(`http://localhost:3000/api/v1/users/${this.currentUser.id}`).then((res) => res.json()).then((json) => {
-			console.log('userInfoAPIreturn', json);
-			this.setState({
-				userInfo: json,
-				allTags: json.tags
+		fetch(`https://fathomless-citadel-93230.herokuapp.com/api/v1/users/${this.currentUser.id}`)
+			.then((res) => res.json())
+			.then((json) => {
+				console.log('userInfoAPIreturn', json);
+				this.setState({
+					userInfo: json,
+					allTags: json.tags
+				});
 			});
-		});
 	};
 
 	renderDestinationCards = (tagId) => {

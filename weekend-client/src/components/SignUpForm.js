@@ -6,6 +6,7 @@ const SignUpForm = (props) => {
 
 	return (
 		<form className="user-form" onSubmit={(ev) => props.handleSignUpSubmit(ev)}>
+			<div className="app-name">Weekend Weather Watcher</div>
 			<div className="title">Enter Username</div>
 			<input
 				className="input-box"

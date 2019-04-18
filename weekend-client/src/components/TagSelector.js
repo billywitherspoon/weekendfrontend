@@ -9,9 +9,9 @@ const TagSelector = (props) => {
 
 <form>
 	<div>
-		<h3>Filter By House</h3>
+		<h3>Filter By Tag</h3>
 	</div>
-	<input name="selectedHouse" type="radio" value="All" onChange={(ev) => props.handleFilterChange(ev)} />All
+	<input name="selectedHouse" type="checkox" value="All" onChange={(ev) => props.handleFilterChange(ev)} />All
 </form>;
 
 export default TagSelector;
