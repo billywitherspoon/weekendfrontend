@@ -52,14 +52,37 @@ class DestinationFormContainer extends Component {
 		if (ev) {
 			ev.preventDefault();
 		}
-		this.props.hideDestinationForm();
 		console.log('CURRENT DESTINATION', currentDestination);
 		console.log('handling new form submit destination creation');
-		let destinationFormData = {};
+		if (this.state.currentTag) {
+			console.log('there is a current tag');
+			let hashTag = '#' + this.state.currentTag.split(' ').join('').toLowerCase().replace(/\W/g, '');
+			let newTags = this.state.tags.slice();
+			newTags.push(hashTag);
+			console.log('newTags', newTags);
+			this.setState(
+				{
+					tags: newTags,
+					currentTag: ''
+				},
+				() => {
+					console.log('running anon function');
+					console.log('state', this.state);
+					this.postDestination();
+				}
+			);
+		} else if (this.state.tags.length) {
+			console.log('no active current tag');
+			this.postDestination();
+		} else {
+			alert('Please add a tag');
+		}
+	};
 
-		console.log('FORM DATA', destinationFormData);
+	postDestination = () => {
+		this.props.hideDestinationForm();
 
-		destinationFormData = {
+		let destinationFormData = {
 			destination: {
 				latitude: this.state.latLng.lat,
 				longitude: this.state.latLng.lng,
@@ -69,7 +92,6 @@ class DestinationFormContainer extends Component {
 			}
 		};
 		console.log('DATA: ', destinationFormData);
-
 		fetch('http://localhost:3000/api/v1/destinations', {
 			method: 'POST',
 			headers: {
@@ -81,7 +103,6 @@ class DestinationFormContainer extends Component {
 			.then((res) => res.json())
 			.then((json) => {
 				console.log(json);
-				this.props.updateUserPageContainer();
 			})
 			.catch((error) => console.error('Error', error));
 	};
@@ -110,8 +131,10 @@ class DestinationFormContainer extends Component {
 			.then((json) => console.log('IMGS?: ', json));
 	};
 
-	persistTag = (ev) => {
-		ev.preventDefault();
+	persistTag = (ev = '') => {
+		if (ev) {
+			ev.preventDefault();
+		}
 		if (this.state.currentTag) {
 			// let hashTag = '#' + this.state.currentTag.split(' ').join('');
 			let hashTag = '#' + this.state.currentTag.split(' ').join('').toLowerCase().replace(/\W/g, '');
