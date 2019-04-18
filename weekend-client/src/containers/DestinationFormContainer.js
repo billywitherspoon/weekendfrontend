@@ -65,7 +65,7 @@ class DestinationFormContainer extends Component {
 				longitude: this.state.latLng.lng,
 				name: this.state.destination,
 				tags: this.state.tags,
-				user_id: 1
+				user_id: this.currentUser.id
 			}
 		};
 		console.log('DATA: ', destinationFormData);

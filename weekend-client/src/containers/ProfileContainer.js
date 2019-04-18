@@ -61,7 +61,8 @@ class ProfileContainer extends Component {
 	};
 
 	renderTagDivs = () => {
-		if (this.state.allTags) {
+		if (this.state.allTags && this.state.allFavorites) {
+			debugger;
 			return this.state.allTags.map((tag) => {
 				return (
 					<div id="user-tag-container">
@@ -74,9 +75,7 @@ class ProfileContainer extends Component {
 	};
 
 	renderDestinationList = (tagId) => {
-		if (this.state.allFavorites) {
-			return <div className="destination-list">{this.renderDestinationCards(tagId)}</div>;
-		}
+		return <div className="destination-list">{this.renderDestinationCards(tagId)}</div>;
 	};
 
 	render() {
