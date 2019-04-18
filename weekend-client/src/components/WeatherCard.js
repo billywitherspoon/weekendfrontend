@@ -12,19 +12,6 @@ import clear_night from '../Images/clear_night.png';
 import fog from '../Images/fog.png';
 import wind from '../Images/wind.png';
 
-
-// clear-day
-// clear-night
-// partly-cloudy-day
-// partly-cloudy-night
-// cloudy
-// rain
-// sleet
-// snow
-// wind
-// fog
-
-
 class WeatherCard extends Component {
 	constructor(props) {
 		super(props);
@@ -41,12 +28,10 @@ class WeatherCard extends Component {
 	howFarFromWeekend = (dayOfWeek) => {
 		let days = []
 		if (dayOfWeek === 6) {
-			console.log('it is Friday//show fri/sat/sun');
 			days.push(dayOfWeek);
 			days.push(dayOfWeek + 1);
 			days.push(dayOfWeek + 2);
 		}else if(dayOfWeek === 7){
-			console.log("it is saturday// show sat/sun");
 			days.push(dayOfWeek);
 			days.push(dayOfWeek + 1);
 		}else{
@@ -54,7 +39,6 @@ class WeatherCard extends Component {
 			days.push(daysUntilWeekend);
 			days.push(daysUntilWeekend + 1);
 			days.push(daysUntilWeekend + 2);
-			console.log("Days to display:", days)
 		}
 		return days;
 	};
