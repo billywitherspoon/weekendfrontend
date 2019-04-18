@@ -41,7 +41,11 @@ class DestinationFormContainer extends Component {
 	};
 
 	updateTagName = (ev) => {
-		this.setState({ [ev.target.name]: ev.target.value });
+		let hashTag = ev.target.value;
+		if (hashTag[0] !== '#') {
+			hashTag = '#' + hashTag;
+		}
+		this.setState({ currentTag: hashTag });
 	};
 
 	handleDestinationFormSubmit = (ev, currentDestination) => {
@@ -75,7 +79,10 @@ class DestinationFormContainer extends Component {
 			body: JSON.stringify(destinationFormData)
 		})
 			.then((res) => res.json())
-			.then((json) => console.log(json))
+			.then((json) => {
+				console.log(json);
+				this.props.updateUserPageContainer();
+			})
 			.catch((error) => console.error('Error', error));
 	};
 
@@ -103,25 +110,11 @@ class DestinationFormContainer extends Component {
 			.then((json) => console.log('IMGS?: ', json));
 	};
 
-	// renderTagForm = () => {
-	// 	// let tempArray = [];
-	// 	// for (let i = 0; i < this.state.tagCount; i++) {
-	// 	// 	tempArray.push('item');
-	// 	// }
-	// 	// return tempArray.map((item) => {
-	// 	return;
-	// };
-
-	// addNewTagForm = () => {
-	// 	this.setState((prevState) => {
-	// 		return { tagCount: prevState.tagCount + 1, addTags: false };
-	// 	});
-	// };
-
 	persistTag = (ev) => {
 		ev.preventDefault();
 		if (this.state.currentTag) {
-			let hashTag = '#' + this.state.currentTag.split(' ').join('');
+			// let hashTag = '#' + this.state.currentTag.split(' ').join('');
+			let hashTag = '#' + this.state.currentTag.split(' ').join('').toLowerCase().replace(/\W/g, '');
 			this.setState((st) => {
 				return {
 					tags: st.tags.concat(hashTag),
@@ -138,11 +131,22 @@ class DestinationFormContainer extends Component {
 			<Fragment>
 				{!this.state.destination ? (
 					<div className="autocomplete-form-container">
-						<AutocompleteSearch
-							setLatLng={this.setLatLng}
-							setDestination={this.setDestination}
-							setPlaceId={this.setPlaceId}
-						/>
+						<div className="autocomplete-form">
+							<AutocompleteSearch
+								setLatLng={this.setLatLng}
+								setDestination={this.setDestination}
+								setPlaceId={this.setPlaceId}
+							/>
+						</div>
+						<div className={`cancel-destination-container flex-center`}>
+							<button
+								className="button"
+								id="cancel-destination-button"
+								onClick={this.props.hideDestinationForm}
+							>
+								CANCEL
+							</button>
+						</div>
 					</div>
 				) : (
 					<div className="destination-form-container">
@@ -150,7 +154,7 @@ class DestinationFormContainer extends Component {
 							<div id="destination-title">{this.state.destination.split(',')[0]}</div>
 							<div id="tag-container">
 								{this.state.tags.map((tag) => <div className="hashtag">{tag}</div>)}
-								<div className="hashtag">#{this.state.currentTag}</div>
+								<div className="hashtag">{this.state.currentTag}</div>
 							</div>
 						</div>
 						<AddDestinationTagForm
@@ -167,7 +171,7 @@ class DestinationFormContainer extends Component {
 								ADD TO MY FAVORITES
 							</button>
 						</div>
-						<div className="flex-center">
+						<div className={`cancel-destination-container flex-center`}>
 							<button
 								className="button"
 								id="cancel-destination-button"

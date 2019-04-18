@@ -12,7 +12,8 @@ class UserPageContainer extends Component {
 			viewProfile: true,
 			selectedLocation: '',
 			showDestinationFormContainer: false,
-			currentDestination: ''
+			currentDestination: '',
+			fakeState: 1
 		};
 	}
 
@@ -20,6 +21,15 @@ class UserPageContainer extends Component {
 	toggleView = () => {
 		this.setState((prevState) => {
 			return { viewProfile: !prevState.viewProfile };
+		});
+	};
+
+	updateUserPageContainer = () => {
+		this.forceUpdate();
+		this.setState((st) => {
+			return {
+				fakeState: st.fakeState + 1
+			};
 		});
 	};
 
@@ -58,6 +68,7 @@ class UserPageContainer extends Component {
 					<DestinationFormContainer
 						hideDestinationForm={this.hideDestinationForm}
 						currentDestination={this.state.currentDestination}
+						updateUserPageContainer={this.updateUserPageContainer}
 					/>
 				</span>
 			);
