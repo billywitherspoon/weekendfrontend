@@ -1,8 +1,14 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:700);
+@import url(https://fonts.googleapis.com/css?family=Courgette|Enriqueta|Permanent+Marker|Roboto);
 html,
 body {
-  font-family: Roboto;
+  font-family: Enriqueta;
 }
+
+/* fonts available
+font-family: 'Permanent Marker', cursive;
+font-family: 'Courgette', cursive;
+font-family: 'Roboto', sans-serif;
+font-family: 'Enriqueta', serif; */
 
 .nav-bar {
   position: fixed;
@@ -59,6 +65,15 @@ body {
 .destination-set {
   grid-row: 2 / -1;
   grid-column: 1 / -1;
+}
+
+#user-tag-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: Permanent Marker;
+  font-size: 3vh;
 }
 
 #user-form-container {
@@ -197,6 +212,7 @@ body {
 
 .hashtag {
   font-size: 2vh;
+  font-family: Permanent Marker;
 }
 
 /* #add-to-favorite-button {
@@ -321,17 +337,34 @@ body {
   align-items: center;
   justify-content: space-around;
   margin: 2vmin;
+  flex-wrap: wrap;
 }
 
 .dest-card-title {
-  font-size: 2vmin;
+  font-size: 3vmin;
 }
 
 .destination-card-image {
   height: 100px;
 }
 
-.destination-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+@media only screen and (max-width: 900px) {
+  .destination-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media only screen and (min-width: 901px), (max-width: 1300px) {
+  .destination-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media only screen and (min-width: 1301px) {
+  .destination-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }
