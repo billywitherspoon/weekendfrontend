@@ -11,6 +11,7 @@
 // <p>{recentForecast[recentForecast.length -1].data.daily.icon}</p>
 
 import React, { Component } from 'react';
+import WeatherCard from './WeatherCard'
 
 class DestinationCard extends Component {
 	constructor(props) {
@@ -57,11 +58,19 @@ class DestinationCard extends Component {
 	// 	);
 	// };
 
+
 	render() {
+		let forecast = this.props.destination.forecasts[this.props.destination.forecasts.length - 1].data;
 		return (
 			<div className="flex-center">
 				<div className="destination-card">
 					<div className="dest-card-title">{this.props.destination.name.split(',')[0]}</div>
+
+					<div className="weather-icons">
+						WEATHER ICONS HERE
+						<WeatherCard destinationForecast={forecast}/>
+					</div>
+
 					{this.props.profileView ? null : (
 						<button
 							className="button"
