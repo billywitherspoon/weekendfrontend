@@ -34,25 +34,15 @@ const DestinationCard extends Component {
 	renderDestinationTags = () => {
 		return null;
 
-		// Array.removeDuplicates
-		// return Array.map((tag) => {
-		//   return <div className='hashtag'>tag</div>
-		// })
+	
 	};
 
 	render() {
 		return (
 			<div className="flex-center">
-				<div className="destination-card">
-					<div className="dest-card-title">{this.props.destination.name.split(',')[0]}</div>
-					<button
-						className="button"
-						onClick={() => {
-							this.props.addDestination(this.props.destination);
-						}}
-					>
-						ADD TO FAVORITES
-					</button>
+				<div className="weather-card">
+					//weather icon
+					//forecast
 				</div>
 			</div>
 		);
