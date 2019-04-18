@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import AutocompleteSearch from '../components/AutocompleteSearch';
+import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import AddDestinationTagForm from '../components/AddDestinationTagForm';
 
 class DestinationFormContainer extends Component {
@@ -17,14 +18,43 @@ class DestinationFormContainer extends Component {
 		};
 	}
 
+	componentDidMount = () => {
+		let latLng = '';
+		console.log('currentDestination', this.props.currentDestination);
+		if (this.props.currentDestination) {
+			latLng = {
+				latitude: this.props.currentDestination.latitude,
+				longitude: this.props.currentDestination.longitude
+			};
+			this.setLatLng(latLng);
+			this.setDestination(this.props.currentDestination.name);
+			this.addPlaceIdCurrentDestination();
+		}
+	};
+
+	addPlaceIdCurrentDestination = () => {
+		console.log('adding place id');
+		console.log('address', this.props.currentDestination.address);
+		geocodeByAddress(this.props.currentDestination.address)
+			.then((results) => this.setPlaceId(results[0].place_id))
+			.catch((error) => console.error('Error', error));
+	};
+
 	updateTagName = (ev) => {
 		this.setState({ [ev.target.name]: ev.target.value });
 	};
 
-	handleDestinationFormSubmit = (ev) => {
-		ev.preventDefault();
+	handleDestinationFormSubmit = (ev, currentDestination) => {
+		if (ev) {
+			ev.preventDefault();
+		}
+		console.log('CURRENT DESTINATION', currentDestination);
 		console.log('handling new form submit destination creation');
-		let destinationFormData = {
+		let destinationFormData = {};
+
+		console.log('FORM DATA', destinationFormData);
+
+		destinationFormData = {
 			destination: {
 				latitude: this.state.latLng.lat,
 				longitude: this.state.latLng.lng,
@@ -33,7 +63,6 @@ class DestinationFormContainer extends Component {
 				user_id: 1
 			}
 		};
-
 		console.log('DATA: ', destinationFormData);
 
 		fetch('http://localhost:3000/api/v1/destinations', {
@@ -58,6 +87,7 @@ class DestinationFormContainer extends Component {
 	};
 
 	setDestination = (destination) => {
+		console.log('Setting destination.');
 		this.setState({ destination });
 	};
 
@@ -129,7 +159,7 @@ class DestinationFormContainer extends Component {
 							<button
 								className="button"
 								id="add-to-favorite-button"
-								onClick={(ev) => this.handleDestinationFormSubmit(ev)}
+								onClick={(ev) => this.handleDestinationFormSubmit(ev, '')}
 							>
 								ADD TO MY FAVORITES
 							</button>

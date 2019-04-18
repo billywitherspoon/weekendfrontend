@@ -16,6 +16,7 @@ class AutocompleteSearch extends React.Component {
 	// to the form to set state in DestinationFormContainer. Destination found
 	// by PlacesAutocomplete below.
 	handleSelect = (address) => {
+		console.log('properly formated address', address);
 		geocodeByAddress(address)
 			.then((results) => getLatLng(results[0]))
 			.then((latLng) => {

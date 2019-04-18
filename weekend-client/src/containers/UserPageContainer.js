@@ -11,7 +11,8 @@ class UserPageContainer extends Component {
 		this.state = {
 			viewProfile: true,
 			selectedLocation: '',
-			showDestinationFormContainer: false
+			showDestinationFormContainer: false,
+			currentDestination: ''
 		};
 	}
 
@@ -22,9 +23,17 @@ class UserPageContainer extends Component {
 		});
 	};
 
-	addDestination = () => {
+	addDestination = (destination = '') => {
 		this.setState({
-			showDestinationFormContainer: true
+			showDestinationFormContainer: true,
+			currentDestination: destination
+		});
+	};
+
+	hideDestinationForm = () => {
+		this.setState({
+			showDestinationFormContainer: false,
+			currentDestination: ''
 		});
 	};
 
@@ -46,12 +55,16 @@ class UserPageContainer extends Component {
 		if (this.state.showDestinationFormContainer) {
 			return (
 				<span id="destination-form-background">
-					<DestinationFormContainer />
+					<DestinationFormContainer currentDestination={this.state.currentDestination} />
 				</span>
 			);
 		} else {
 			return null;
 		}
+	};
+
+	handleAddToFavorites = (destination) => {
+		this.setState({ currentDestination: destination });
 	};
 
 	render() {

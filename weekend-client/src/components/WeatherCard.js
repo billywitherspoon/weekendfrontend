@@ -1,18 +1,8 @@
-// <div className="sub-title">Tags</div>
-// <div id="destination-tag-container">{this.renderDestinationTags()}</div>
-//add later after dest-title
-// <WeatherCard/>
 
-// let recentForecast = this.props.destination.forecasts;
-// <img src={this.props.destination.image}
-// </div>
-// {this.determineDayOfWeek()}
-// <div className=>.data.daily.summary}</div>
-// <p>{recentForecast[recentForecast.length -1].data.daily.icon}</p>
 
 import React, { Component } from 'react';
 
-class DestinationCard extends Component {
+const DestinationCard extends Component {
 	constructor(props) {
 		super(props);
 		this.currentUser = JSON.parse(sessionStorage.getItem('user'));

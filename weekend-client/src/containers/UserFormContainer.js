@@ -87,7 +87,7 @@ class UserFormContainer extends Component {
 	};
 
 	renderUserForm = () => {
-		console.log('renderuserform fired!', this.currentUser)
+		console.log('renderuserform fired!', this.currentUser);
 		if (!this.currentUser && this.state.signUpActive) {
 			return (
 				<div id="user-form-container">
@@ -117,9 +117,7 @@ class UserFormContainer extends Component {
 				</div>
 			);
 		} else {
-			return (
-				<h1>Component showed</h1>
-			)
+			return <h1>Component showed</h1>;
 		}
 	};
 	render() {

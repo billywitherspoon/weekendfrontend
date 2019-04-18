@@ -150,6 +150,14 @@ body {
   flex-wrap: wrap;
 }
 
+#destination-tag-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
 #add-tag-form {
   grid-row: 3/4;
   grid-column: 1;
@@ -256,6 +264,10 @@ body {
   justify-content: center;
 }
 
+.sub-title {
+  font-size: 1.5vmin;
+}
+
 .suggestion-item {
   font-size: 2vh;
   width: 40em;
@@ -269,9 +281,18 @@ body {
 }
 
 .destination-card {
-  height: 300px;
-  width: 200px;
+  height: 20vh;
+  width: 100%;
   border: solid;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  margin: 2vmin;
+}
+
+.dest-card-title {
+  font-size: 2vmin;
 }
 
 .destination-card-image {
@@ -281,5 +302,6 @@ body {
 .destination-list {
   color: blue;
   background-color: grey;
-  display: grid | inline-grid;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
