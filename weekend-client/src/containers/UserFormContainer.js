@@ -116,8 +116,6 @@ class UserFormContainer extends Component {
 					/>
 				</div>
 			);
-		} else {
-			return <h1>Component showed</h1>;
 		}
 	};
 	render() {

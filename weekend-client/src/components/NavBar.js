@@ -4,6 +4,15 @@ const NavBar = (props) => {
 	let currentUser = JSON.parse(sessionStorage.getItem('user'));
 	return (
 		<div className={`nav-bar non-form-element`}>
+			{props.viewProfile ? (
+				<div className="nav-bar-text" onClick={() => props.toggleView()}>
+					Explore
+				</div>
+			) : (
+				<div className="nav-bar-text" onClick={() => props.toggleView()}>
+					My Profile
+				</div>
+			)}
 			<div className="nav-bar-text" onClick={() => props.addDestination()}>
 				Add Destination
 			</div>

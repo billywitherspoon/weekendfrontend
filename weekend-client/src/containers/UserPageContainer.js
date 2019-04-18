@@ -55,7 +55,10 @@ class UserPageContainer extends Component {
 		if (this.state.showDestinationFormContainer) {
 			return (
 				<span id="destination-form-background">
-					<DestinationFormContainer currentDestination={this.state.currentDestination} />
+					<DestinationFormContainer
+						hideDestinationForm={this.hideDestinationForm}
+						currentDestination={this.state.currentDestination}
+					/>
 				</span>
 			);
 		} else {
@@ -71,7 +74,12 @@ class UserPageContainer extends Component {
 		return (
 			<div id="user-page-container">
 				{this.renderDestinationFormContainer()}
-				<NavBar addDestination={this.addDestination} logoutUser={this.props.logoutUser} />
+				<NavBar
+					viewProfile={this.state.viewProfile}
+					toggleView={this.toggleView}
+					addDestination={this.addDestination}
+					logoutUser={this.props.logoutUser}
+				/>
 				{this.state.viewProfile ? (
 					<ProfileContainer toggleView={this.toggleView} addDestination={this.addDestination} />
 				) : (
