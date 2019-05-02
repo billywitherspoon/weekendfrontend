@@ -13,11 +13,12 @@ class HomeContainer extends Component {
 
 	renderUserPageContainer = () => {
 		if (this.currentUser) {
-			return (
-				<UserPageContainer logoutUser={this.props.logoutUser} allDestinations={this.state.allDestinations} />
-			);
+			return <UserPageContainer logoutUser={this.props.logoutUser} />;
 		}
 	};
+
+	//this was in line 17 but does not seem to belong
+	//allDestinations={this.state.allDestinations}
 
 	render() {
 		return (

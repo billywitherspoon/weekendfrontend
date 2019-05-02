@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 
 import cloudy from '../Images/cloudy.png';
@@ -23,19 +22,19 @@ class WeatherCard extends Component {
 	determineDayOfWeek = () => {
 		let today = new Date();
 		let dayOfWeek = today.getDay();
-		return(dayOfWeek);
+		return dayOfWeek;
 	};
 
 	howFarFromWeekend = (dayOfWeek) => {
-		let days = []
+		let days = [];
 		if (dayOfWeek === 6) {
 			days.push(dayOfWeek);
 			days.push(dayOfWeek + 1);
 			days.push(dayOfWeek + 2);
-		}else if(dayOfWeek === 7){
+		} else if (dayOfWeek === 7) {
 			days.push(dayOfWeek);
 			days.push(dayOfWeek + 1);
-		}else{
+		} else {
 			let daysUntilWeekend = 5 - dayOfWeek;
 			days.push(daysUntilWeekend);
 			days.push(daysUntilWeekend + 1);
@@ -50,39 +49,39 @@ class WeatherCard extends Component {
 		let daysToDisplay = this.howFarFromWeekend(dayOfWeek);
 
 		let weekendWeatherIcons = [];
-		let theIcons = []
+		let theIcons = [];
 
 		//grabs the icon names associated with the upcoming weekend
-		daysToDisplay.map(day => {
-			weekendWeatherIcons.push(this.props.destinationForecast.daily.data[day].icon)
-		})
+		daysToDisplay.map((day) => {
+			weekendWeatherIcons.push(this.props.destinationForecast.daily.data[day].icon);
+		});
 
 		//sends the appropriate .png as an <img> to render to the page
-		weekendWeatherIcons.map(icon => {
-			if (icon === "clear-day"){
-				theIcons.push(<img src={clear_day} className="weather-icon"/>)
-			} else if (icon === "clear-night"){
-				theIcons.push(<img src={clear_night} className="weather-icon"/>)
-			} else if (icon === "partly-cloudy-day"){
-				theIcons.push(<img src={partly_cloudy_day} className="weather-icon"/>)
-			} else if (icon === "partly-cloudy-night"){
-				theIcons.push(<img src={partly_cloudy_night} className="weather-icon"/>)
-			} else if (icon === "cloudy"){
-				theIcons.push(<img src={cloudy} className="weather-icon"/>)
-			} else if (icon === "rain"){
-				theIcons.push(<img src={rain} className="weather-icon"/>)
-			} else if (icon === "sleet"){
-				theIcons.push(<img src={sleet} className="weather-icon"/>)
-			} else if (icon === "snow"){
-				theIcons.push(<img src={snow} className="weather-icon"/>)
-			} else if (icon === "fog"){
-				theIcons.push(<img src={fog} className="weather-icon"/>)
-			} else if (icon === "wind"){
-				theIcons.push(<img src={wind} className="weather-icon"/>)
+		weekendWeatherIcons.map((icon) => {
+			if (icon === 'clear-day') {
+				theIcons.push(<img key={Math.random()} src={clear_day} className="weather-icon" />);
+			} else if (icon === 'clear-night') {
+				theIcons.push(<img key={Math.random()} src={clear_night} className="weather-icon" />);
+			} else if (icon === 'partly-cloudy-day') {
+				theIcons.push(<img key={Math.random()} src={partly_cloudy_day} className="weather-icon" />);
+			} else if (icon === 'partly-cloudy-night') {
+				theIcons.push(<img key={Math.random()} src={partly_cloudy_night} className="weather-icon" />);
+			} else if (icon === 'cloudy') {
+				theIcons.push(<img key={Math.random()} src={cloudy} className="weather-icon" />);
+			} else if (icon === 'rain') {
+				theIcons.push(<img key={Math.random()} src={rain} className="weather-icon" />);
+			} else if (icon === 'sleet') {
+				theIcons.push(<img key={Math.random()} src={sleet} className="weather-icon" />);
+			} else if (icon === 'snow') {
+				theIcons.push(<img key={Math.random()} src={snow} className="weather-icon" />);
+			} else if (icon === 'fog') {
+				theIcons.push(<img key={Math.random()} src={fog} className="weather-icon" />);
+			} else if (icon === 'wind') {
+				theIcons.push(<img key={Math.random()} src={wind} className="weather-icon" />);
 			}
 		});
 
-		return theIcons
+		return theIcons;
 	};
 
 	renderWeatherTags = () => {
@@ -92,9 +91,7 @@ class WeatherCard extends Component {
 	render() {
 		return (
 			<div className="flex-center">
-				<div className="weather-card">
-					{this.showWeatherForWeekend()}
-				</div>
+				<div className="weather-card">{this.showWeatherForWeekend()}</div>
 			</div>
 		);
 	}
