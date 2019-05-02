@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DestinationFormContainer from './DestinationFormContainer';
+// import DestinationFormContainer from './DestinationFormContainer';
 
 import DestinationCard from '../components/DestinationCard';
 

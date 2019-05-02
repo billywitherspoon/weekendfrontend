@@ -1,9 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const LoginForm = (props) => {
 	// let currentUser = JSON.parse(sessionStorage.getItem('user'));
-	let currentUser = sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user')) : null;
+	// let currentUser = sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user')) : null;
 
 	return (
 		<form className="user-form" onSubmit={(ev) => props.handleLoginSubmit(ev)}>

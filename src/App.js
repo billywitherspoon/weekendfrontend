@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import './App.css';
 import HomeContainer from './containers/HomeContainer.js';
 import UserPageContainer from './containers/UserPageContainer.js';
-import Typekit from 'typekit';
+// import Typekit from 'typekit';
 // import HomeRouter from './containers/HomeRouter.js';
 // router not being used
 
@@ -23,9 +23,6 @@ class App extends Component {
 		script.async = true;
 		script.type = 'text/javascript';
 		document.body.appendChild(script);
-		try {
-			Typekit.load({ async: true });
-		} catch (e) {}
 	};
 
 	// componentDidMount = () => {
