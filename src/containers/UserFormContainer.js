@@ -43,6 +43,7 @@ class UserFormContainer extends Component {
 					console.log(user_json);
 					if (user_json.error) {
 						alert(user_json.error);
+						this.toggleShowContent();
 					} else {
 						this.props.loginUser(user_json);
 					}
