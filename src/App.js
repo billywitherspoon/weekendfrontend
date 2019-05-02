@@ -2,9 +2,9 @@
 // }
 import React, { Component } from 'react';
 import './App.css';
-
 import HomeContainer from './containers/HomeContainer.js';
 import UserPageContainer from './containers/UserPageContainer.js';
+import Typekit from 'typekit';
 // import HomeRouter from './containers/HomeRouter.js';
 // router not being used
 
@@ -16,13 +16,16 @@ class App extends Component {
 		};
 	}
 
-	componentDidUpdate = () => {
+	componentDidMount = () => {
 		const script = document.createElement('script');
 		script.src =
 			'http://maps.googleapis.com/maps/api/js?key=AIzaSyAntpQHNnQ1VhJKBJ8ikMKb7HZ-g83JxKA&libraries=places';
 		script.async = true;
 		script.type = 'text/javascript';
 		document.body.appendChild(script);
+		try {
+			Typekit.load({ async: true });
+		} catch (e) {}
 	};
 
 	// componentDidMount = () => {

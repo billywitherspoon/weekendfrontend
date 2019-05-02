@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import UserFormContainer from './UserFormContainer.js';
 import UserPageContainer from './UserPageContainer';
 
-class HomeContainer extends Component {
+class HomeContainer extends React.Component {
 	constructor(props) {
 		super(props);
 		this.currentUser = JSON.parse(sessionStorage.getItem('user'));
@@ -22,7 +22,7 @@ class HomeContainer extends Component {
 
 	render() {
 		return (
-			<div id="home-container">
+			<div>
 				{this.renderUserPageContainer()}
 				<UserFormContainer
 					loginUser={this.props.loginUser}
