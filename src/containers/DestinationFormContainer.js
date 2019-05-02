@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import AutocompleteSearch from '../components/AutocompleteSearch';
-// import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+import { geocodeByAddress } from 'react-places-autocomplete';
 import AddDestinationTagForm from '../components/AddDestinationTagForm';
 
 class DestinationFormContainer extends Component {
@@ -92,7 +92,7 @@ class DestinationFormContainer extends Component {
 			}
 		};
 		console.log('DATA: ', destinationFormData);
-		fetch('https://weekendweatherwatcherbackend.herokuapp.com/api/v1/destinations', {
+		fetch('http://localhost:3000/api/v1/destinations', {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',

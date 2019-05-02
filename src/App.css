@@ -30,6 +30,7 @@ font-family: 'Enriqueta', serif; */
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
 }
 
 #home-container {
@@ -95,7 +96,7 @@ font-family: 'Enriqueta', serif; */
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  height: 60%;
+  height: 70%;
 }
 
 .app-name {
@@ -319,7 +320,6 @@ font-family: 'Enriqueta', serif; */
 }
 
 #autocomplete-drop-down {
-  width: 40em;
   /* change this above */
   margin-top: 4px;
   display: flex;
@@ -329,21 +329,11 @@ font-family: 'Enriqueta', serif; */
 }
 
 .title {
-  font-size: 3vmin;
+  font-size: 3vh;
 }
 
 .sub-title {
-  font-size: 1.5vmin;
-}
-
-.suggestion-item {
   font-size: 2vh;
-  text-align: center;
-}
-
-.suggestion-item-active {
-  font-size: 3vh;
-  text-align: center;
 }
 
 .destination-card {
@@ -370,10 +360,35 @@ font-family: 'Enriqueta', serif; */
   height: 100px;
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 900px) {
   .destination-list {
     display: grid;
     grid-template-columns: 1fr 1fr;
+  }
+  .suggestion-item {
+    font-size: 1.75vh;
+    text-align: center;
+  }
+
+  .suggestion-item-active {
+    font-size: 2.25vh;
+    text-align: center;
+  }
+}
+
+@media only screen and (min-width: 901px) and (max-width: 1200px) {
+  .destination-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .suggestion-item {
+    font-size: 2vh;
+    text-align: center;
+  }
+
+  .suggestion-item-active {
+    font-size: 3vh;
+    text-align: center;
   }
 }
 
@@ -382,12 +397,32 @@ font-family: 'Enriqueta', serif; */
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
   }
+
+  .suggestion-item {
+    font-size: 2vh;
+    text-align: center;
+  }
+
+  .suggestion-item-active {
+    font-size: 3vh;
+    text-align: center;
+  }
 }
 
 @media only screen and (min-width: 1501px) {
   .destination-list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .suggestion-item {
+    font-size: 2vh;
+    text-align: center;
+  }
+
+  .suggestion-item-active {
+    font-size: 3vh;
+    text-align: center;
   }
 }
 

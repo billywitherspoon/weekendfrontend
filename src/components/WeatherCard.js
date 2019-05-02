@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import cloudy from '../Images/cloudy.png';
 import partly_cloudy_night from '../Images/cloudy_night.png';
 import partly_cloudy_day from '../Images/partly_cloudy.png';
@@ -89,25 +88,36 @@ class WeatherCard extends Component {
 
 		weekendWeatherIcons.forEach((icon) => {
 			if (icon === 'clear-day') {
-				theIcons.push(<img key={Math.random()} src={clear_day} className="weather-icon" />);
+				theIcons.push(<img alt={'Clear Day'} key={Math.random()} src={clear_day} className="weather-icon" />);
 			} else if (icon === 'clear-night') {
-				theIcons.push(<img key={Math.random()} src={clear_night} className="weather-icon" />);
+				theIcons.push(
+					<img alt={'Clear Night'} key={Math.random()} src={clear_night} className="weather-icon" />
+				);
 			} else if (icon === 'partly-cloudy-day') {
-				theIcons.push(<img key={Math.random()} src={partly_cloudy_day} className="weather-icon" />);
+				theIcons.push(
+					<img alt={'Partly Cloudy'} key={Math.random()} src={partly_cloudy_day} className="weather-icon" />
+				);
 			} else if (icon === 'partly-cloudy-night') {
-				theIcons.push(<img key={Math.random()} src={partly_cloudy_night} className="weather-icon" />);
+				theIcons.push(
+					<img
+						alt={'Partly Cloudy Night'}
+						key={Math.random()}
+						src={partly_cloudy_night}
+						className="weather-icon"
+					/>
+				);
 			} else if (icon === 'cloudy') {
-				theIcons.push(<img key={Math.random()} src={cloudy} className="weather-icon" />);
+				theIcons.push(<img alt={'Cloudy'} key={Math.random()} src={cloudy} className="weather-icon" />);
 			} else if (icon === 'rain') {
-				theIcons.push(<img key={Math.random()} src={rain} className="weather-icon" />);
+				theIcons.push(<img alt={'Rain'} key={Math.random()} src={rain} className="weather-icon" />);
 			} else if (icon === 'sleet') {
-				theIcons.push(<img key={Math.random()} src={sleet} className="weather-icon" />);
+				theIcons.push(<img alt={'Sleet'} key={Math.random()} src={sleet} className="weather-icon" />);
 			} else if (icon === 'snow') {
-				theIcons.push(<img key={Math.random()} src={snow} className="weather-icon" />);
+				theIcons.push(<img alt={'Snow'} key={Math.random()} src={snow} className="weather-icon" />);
 			} else if (icon === 'fog') {
-				theIcons.push(<img key={Math.random()} src={fog} className="weather-icon" />);
+				theIcons.push(<img alt={'Fog'} key={Math.random()} src={fog} className="weather-icon" />);
 			} else if (icon === 'wind') {
-				theIcons.push(<img key={Math.random()} src={wind} className="weather-icon" />);
+				theIcons.push(<img alt={'Wind'} key={Math.random()} src={wind} className="weather-icon" />);
 			}
 		});
 

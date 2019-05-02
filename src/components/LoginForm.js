@@ -22,9 +22,9 @@ const LoginForm = (props) => {
 				SIGN UP
 			</button>
 			<div className="flex-center-column">
-				<div className="title">An App by Billy Witherspoon and Madison Stankevich</div>
-				<div className="title">Created Using React|JavaScript|Rails|Ruby</div>
-				<div className="title">Please be patient with Heroku load times :)</div>
+				<div className="sub-title">An App by Billy Witherspoon and Madison Stankevich</div>
+				<div className="sub-title">Created Using React | JavaScript | Rails | Ruby</div>
+				<div className="sub-title">Please be patient with Heroku load times :)</div>
 			</div>
 		</form>
 	);
