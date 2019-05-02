@@ -39,6 +39,7 @@ const SignUpForm = (props) => {
 			<button className="button" id="toggle-sign-up-button" onClick={props.toggleSignUp}>
 				RETURN TO LOGIN
 			</button>
+			<div className="title">please be patient with Heroku load times :)</div>
 		</form>
 	);
 };

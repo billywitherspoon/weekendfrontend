@@ -21,6 +21,7 @@ const LoginForm = (props) => {
 			<button className="button" onClick={props.toggleSignUp}>
 				SIGN UP
 			</button>
+			<div className="title">please be patient with Heroku load times :)</div>
 		</form>
 	);
 };
