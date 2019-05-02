@@ -11,9 +11,18 @@ class UserFormContainer extends Component {
 			username: '',
 			firstName: '',
 			lastName: '',
-			signUpActive: false
+			signUpActive: false,
+			showContent: false
 		};
 	}
+
+	toggleShowContent = () => {
+		this.setState((prevState) => {
+			return {
+				showContent: !prevState.showContent
+			};
+		});
+	};
 
 	handleNameChange = (ev) => {
 		this.setState({
@@ -27,7 +36,8 @@ class UserFormContainer extends Component {
 		console.log('Login Submitted:');
 		console.log(ev);
 		if (this.state.username) {
-			fetch(`https://weekendweatherwatcherbackend/api/v1/users/username/${this.state.username}`)
+			this.toggleShowContent;
+			fetch(`https://weekendweatherwatcherbackend.herokuapp.com/api/v1/users/username/${this.state.username}`)
 				.then((res) => res.json())
 				.then((user_json) => {
 					console.log(user_json);
@@ -60,7 +70,7 @@ class UserFormContainer extends Component {
 				first_name: `${this.state.firstName}`,
 				last_name: `${this.state.lastName}`
 			};
-			fetch('https://weekendweatherwatcherbackend/api/v1/users', {
+			fetch('https://weekendweatherwatcherbackend.herokuapp.com/api/v1/users', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -88,7 +98,7 @@ class UserFormContainer extends Component {
 
 	renderUserForm = () => {
 		console.log('renderuserform fired!', this.currentUser);
-		if (!this.currentUser && this.state.signUpActive) {
+		if (!this.currentUser && this.state.signUpActive && this.state.showContent) {
 			return (
 				<div id="user-form-container">
 					<SignUpForm
@@ -103,7 +113,7 @@ class UserFormContainer extends Component {
 					/>
 				</div>
 			);
-		} else if (!this.currentUser) {
+		} else if (!this.currentUser && this.state.showContent) {
 			return (
 				<div id="user-form-container">
 					<LoginForm
@@ -116,6 +126,8 @@ class UserFormContainer extends Component {
 					/>
 				</div>
 			);
+		} else {
+			return null;
 		}
 	};
 	render() {
