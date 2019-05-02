@@ -12,7 +12,7 @@ class UserFormContainer extends Component {
 			firstName: '',
 			lastName: '',
 			signUpActive: false,
-			showContent: false
+			showContent: true
 		};
 	}
 
