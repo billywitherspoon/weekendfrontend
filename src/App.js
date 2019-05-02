@@ -26,7 +26,7 @@ class App extends Component {
 	componentDidMount() {
 		window.initMap = this.initMap;
 		const gmapScriptEl = document.createElement(`script`);
-		gmapScriptEl.src = `http://maps.googleapis.com/maps/api/js?key=AIzaSyAntpQHNnQ1VhJKBJ8ikMKb7HZ-g83JxKA&libraries=places&callback=initMap`;
+		gmapScriptEl.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyAntpQHNnQ1VhJKBJ8ikMKb7HZ-g83JxKA&libraries=places&callback=initMap`;
 		document.querySelector(`body`).insertAdjacentElement(`beforeend`, gmapScriptEl);
 	}
 
