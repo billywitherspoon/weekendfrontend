@@ -176,7 +176,11 @@ class DestinationFormContainer extends Component {
 						<div id="destination-display">
 							<div id="destination-title">{this.state.destination.split(',')[0]}</div>
 							<div id="tag-container">
-								{this.state.tags.map((tag) => <div className="hashtag">{tag}</div>)}
+								{this.state.tags.map((tag) => (
+									<div key={Math.random()} className="hashtag">
+										{tag}
+									</div>
+								))}
 								<div className="hashtag">{this.state.currentTag}</div>
 							</div>
 						</div>

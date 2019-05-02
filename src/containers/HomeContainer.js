@@ -28,6 +28,12 @@ class HomeContainer extends Component {
 					logoutUser={this.props.logoutUser}
 					showDestinationFormContainer={this.state.showDestinationFormContainer}
 				/>
+				<script
+					async
+					defer
+					type="text/javascript"
+					src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAntpQHNnQ1VhJKBJ8ikMKb7HZ-g83JxKA&libraries=places"
+				/>
 			</div>
 		);
 	}

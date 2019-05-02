@@ -92,10 +92,7 @@ class UserPageContainer extends Component {
 					logoutUser={this.props.logoutUser}
 				/>
 				{this.state.viewProfile ? (
-					<ProfileContainer
-						toggleView={this.toggleView}
-						addDestination={this.addDestination} 
-					/>
+					<ProfileContainer toggleView={this.toggleView} addDestination={this.addDestination} />
 				) : (
 					<ExploreContainer
 						toggleView={this.toggleView}

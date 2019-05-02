@@ -79,7 +79,7 @@ class ProfileContainer extends Component {
 		if (this.state.allTags && this.state.allFavorites) {
 			return this.state.allTags.map((tag) => {
 				return (
-					<div id="user-tag-container">
+					<div id="user-tag-container" key={Math.random()}>
 						<div id="user-tag-name">{tag.name}</div>
 						{this.renderDestinationList(tag.id)}
 					</div>
