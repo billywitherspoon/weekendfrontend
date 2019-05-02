@@ -12,18 +12,23 @@ class App extends Component {
 	constructor() {
 		super();
 		this.state = {
-			loggedIn: false
+			loggedIn: false,
+			gmapsLoaded: false
 		};
 	}
 
-	componentDidMount = () => {
-		const script = document.createElement('script');
-		script.src =
-			'http://maps.googleapis.com/maps/api/js?key=AIzaSyAntpQHNnQ1VhJKBJ8ikMKb7HZ-g83JxKA&libraries=places';
-		script.async = true;
-		script.type = 'text/javascript';
-		document.body.appendChild(script);
+	initMap = () => {
+		this.setState({
+			gmapsLoaded: true
+		});
 	};
+
+	componentDidMount() {
+		window.initMap = this.initMap;
+		const gmapScriptEl = document.createElement(`script`);
+		gmapScriptEl.src = `http://maps.googleapis.com/maps/api/js?key=AIzaSyAntpQHNnQ1VhJKBJ8ikMKb7HZ-g83JxKA&libraries=places&callback=initMap`;
+		document.querySelector(`body`).insertAdjacentElement(`beforeend`, gmapScriptEl);
+	}
 
 	// componentDidMount = () => {
 	// if ("geolocation" in navigator) {
@@ -70,7 +75,7 @@ class App extends Component {
 	render() {
 		return (
 			<div>
-				{this.state.loggedIn ? (
+				{this.state.loggedIn && this.state.gmapsLoaded ? (
 					<UserPageContainer logoutUser={this.logoutUser} />
 				) : (
 					<HomeContainer loginUser={this.loginUser} logoutUser={this.logoutUser} />
