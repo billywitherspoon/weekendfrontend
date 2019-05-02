@@ -5,7 +5,8 @@ import './App.css';
 
 import HomeContainer from './containers/HomeContainer.js';
 import UserPageContainer from './containers/UserPageContainer.js';
-import HomeRouter from './containers/HomeRouter.js';
+// import HomeRouter from './containers/HomeRouter.js';
+// router not being used
 
 class App extends Component {
 	constructor() {
@@ -14,6 +15,15 @@ class App extends Component {
 			loggedIn: false
 		};
 	}
+
+	componentDidUpdate = () => {
+		const script = document.createElement('script');
+		script.src =
+			'http://maps.googleapis.com/maps/api/js?key=AIzaSyAntpQHNnQ1VhJKBJ8ikMKb7HZ-g83JxKA&libraries=places';
+		script.async = true;
+		script.type = 'text/javascript';
+		document.body.appendChild(script);
+	};
 
 	// componentDidMount = () => {
 	// if ("geolocation" in navigator) {
