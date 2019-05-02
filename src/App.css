@@ -320,6 +320,7 @@ font-family: 'Enriqueta', serif; */
 
 #autocomplete-drop-down {
   width: 40em;
+  /* change this above */
   margin-top: 4px;
   display: flex;
   flex-direction: column;
@@ -337,13 +338,11 @@ font-family: 'Enriqueta', serif; */
 
 .suggestion-item {
   font-size: 2vh;
-  width: 40em;
   text-align: center;
 }
 
 .suggestion-item-active {
   font-size: 3vh;
-  width: 40em;
   text-align: center;
 }
 
