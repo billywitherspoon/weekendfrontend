@@ -6,7 +6,7 @@ import partly_cloudy_day from '../Images/partly_cloudy.png';
 import rain from '../Images/rain.png';
 import sleet from '../Images/sleet.png';
 import snow from '../Images/snow.png';
-import clear_dayTEST from '../Images/sun.png';
+// import clear_dayTEST from '../Images/sun.png';
 import clear_day from '../Images/yellow_sun.png';
 import clear_night from '../Images/clear_night.png';
 import fog from '../Images/fog.png';
@@ -52,12 +52,42 @@ class WeatherCard extends Component {
 		let theIcons = [];
 
 		//grabs the icon names associated with the upcoming weekend
-		daysToDisplay.map((day) => {
+		//rewritten as forEach loop below
+		// daysToDisplay.map((day) => {
+		// 	weekendWeatherIcons.push(this.props.destinationForecast.daily.data[day].icon);
+		// });
+
+		daysToDisplay.forEach((day) => {
 			weekendWeatherIcons.push(this.props.destinationForecast.daily.data[day].icon);
 		});
 
 		//sends the appropriate .png as an <img> to render to the page
-		weekendWeatherIcons.map((icon) => {
+		//rewritten as forEach loop below
+		// weekendWeatherIcons.map((icon) => {
+		// 	if (icon === 'clear-day') {
+		// 		theIcons.push(<img key={Math.random()} src={clear_day} className="weather-icon" />);
+		// 	} else if (icon === 'clear-night') {
+		// 		theIcons.push(<img key={Math.random()} src={clear_night} className="weather-icon" />);
+		// 	} else if (icon === 'partly-cloudy-day') {
+		// 		theIcons.push(<img key={Math.random()} src={partly_cloudy_day} className="weather-icon" />);
+		// 	} else if (icon === 'partly-cloudy-night') {
+		// 		theIcons.push(<img key={Math.random()} src={partly_cloudy_night} className="weather-icon" />);
+		// 	} else if (icon === 'cloudy') {
+		// 		theIcons.push(<img key={Math.random()} src={cloudy} className="weather-icon" />);
+		// 	} else if (icon === 'rain') {
+		// 		theIcons.push(<img key={Math.random()} src={rain} className="weather-icon" />);
+		// 	} else if (icon === 'sleet') {
+		// 		theIcons.push(<img key={Math.random()} src={sleet} className="weather-icon" />);
+		// 	} else if (icon === 'snow') {
+		// 		theIcons.push(<img key={Math.random()} src={snow} className="weather-icon" />);
+		// 	} else if (icon === 'fog') {
+		// 		theIcons.push(<img key={Math.random()} src={fog} className="weather-icon" />);
+		// 	} else if (icon === 'wind') {
+		// 		theIcons.push(<img key={Math.random()} src={wind} className="weather-icon" />);
+		// 	}
+		// });
+
+		weekendWeatherIcons.forEach((icon) => {
 			if (icon === 'clear-day') {
 				theIcons.push(<img key={Math.random()} src={clear_day} className="weather-icon" />);
 			} else if (icon === 'clear-night') {

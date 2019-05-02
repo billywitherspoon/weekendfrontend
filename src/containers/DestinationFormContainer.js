@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import AutocompleteSearch from '../components/AutocompleteSearch';
-import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+// import PlacesAutocomplete, { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
 import AddDestinationTagForm from '../components/AddDestinationTagForm';
 
 class DestinationFormContainer extends Component {

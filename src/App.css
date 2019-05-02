@@ -247,6 +247,13 @@ font-family: 'Enriqueta', serif; */
   justify-content: center;
 }
 
+.flex-center-column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .button {
   display: flex;
   align-items: center;
