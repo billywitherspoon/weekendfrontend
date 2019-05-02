@@ -36,7 +36,7 @@ class UserFormContainer extends Component {
 		console.log('Login Submitted:');
 		console.log(ev);
 		if (this.state.username) {
-			this.toggleShowContent;
+			this.toggleShowContent();
 			fetch(`https://weekendweatherwatcherbackend.herokuapp.com/api/v1/users/username/${this.state.username}`)
 				.then((res) => res.json())
 				.then((user_json) => {
@@ -65,6 +65,7 @@ class UserFormContainer extends Component {
 		ev.preventDefault();
 		console.log('Sign Up Submitted:');
 		if (this.state.username && this.state.firstName && this.state.lastName) {
+			this.toggleShowContent();
 			let userData = {
 				username: `${this.state.username}`,
 				first_name: `${this.state.firstName}`,
