@@ -21,9 +21,11 @@ const LoginForm = (props) => {
 			<button className="button" onClick={props.toggleSignUp}>
 				SIGN UP
 			</button>
-			<div className="title">An App by Billy Witherspoon and Madison Stankevich</div>
-			<div className="title">Created Using React|JavaScript|Rails|Ruby</div>
-			<div className="title">Please be patient with Heroku load times :)</div>
+			<div className="flex-center">
+				<div className="title">An App by Billy Witherspoon and Madison Stankevich</div>
+				<div className="title">Created Using React|JavaScript|Rails|Ruby</div>
+				<div className="title">Please be patient with Heroku load times :)</div>
+			</div>
 		</form>
 	);
 };
