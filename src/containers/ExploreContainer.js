@@ -15,7 +15,7 @@ class ExploreContainer extends Component {
 	};
 
 	fetchDestinations = () => {
-		fetch('http://weekendweatherwatcherbackend.herokuapp.com/api/v1/destinations')
+		fetch('https://weekendweatherwatcherbackend.herokuapp.com/api/v1/destinations')
 			.then((res) => res.json())
 			.then((json) => {
 				this.setState({ allDestinations: json });

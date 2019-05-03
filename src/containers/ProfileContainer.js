@@ -29,7 +29,7 @@ class ProfileContainer extends Component {
 	};
 
 	fetchFavorites = () => {
-		fetch(`http://weekendweatherwatcherbackend.herokuapp.com/api/v1/favorites/user/${this.currentUser.id}`)
+		fetch(`https://weekendweatherwatcherbackend.herokuapp.com/api/v1/favorites/user/${this.currentUser.id}`)
 			.then((res) => res.json())
 			.then((json) => {
 				// let allFavorites = [];
@@ -44,7 +44,7 @@ class ProfileContainer extends Component {
 	};
 
 	fetchUser = () => {
-		fetch(`http://weekendweatherwatcherbackend.herokuapp.com/api/v1/users/${this.currentUser.id}`)
+		fetch(`https://weekendweatherwatcherbackend.herokuapp.com/api/v1/users/${this.currentUser.id}`)
 			.then((res) => res.json())
 			.then((json) => {
 				console.log('userInfoAPIreturn', json);
