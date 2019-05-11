@@ -27,12 +27,12 @@ class WeatherCard extends Component {
 	howFarFromWeekend = (dayOfWeek) => {
 		let days = [];
 		if (dayOfWeek === 6) {
-			days.push(dayOfWeek);
-			days.push(dayOfWeek + 1);
-			days.push(dayOfWeek + 2);
+			days.push(0);
+			days.push(1);
+			days.push(2);
 		} else if (dayOfWeek === 7) {
-			days.push(dayOfWeek);
-			days.push(dayOfWeek + 1);
+			days.push(0);
+			days.push(1);
 		} else {
 			let daysUntilWeekend = 5 - dayOfWeek;
 			days.push(daysUntilWeekend);
@@ -55,7 +55,7 @@ class WeatherCard extends Component {
 		// daysToDisplay.map((day) => {
 		// 	weekendWeatherIcons.push(this.props.destinationForecast.daily.data[day].icon);
 		// });
-
+		git;
 		daysToDisplay.forEach((day) => {
 			weekendWeatherIcons.push(this.props.destinationForecast.daily.data[day].icon);
 		});
