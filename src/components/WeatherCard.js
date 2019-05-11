@@ -55,7 +55,7 @@ class WeatherCard extends Component {
 		// daysToDisplay.map((day) => {
 		// 	weekendWeatherIcons.push(this.props.destinationForecast.daily.data[day].icon);
 		// });
-		git;
+
 		daysToDisplay.forEach((day) => {
 			weekendWeatherIcons.push(this.props.destinationForecast.daily.data[day].icon);
 		});
