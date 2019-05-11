@@ -92,7 +92,7 @@ class DestinationFormContainer extends Component {
 			}
 		};
 		console.log('DATA: ', destinationFormData);
-		fetch('http://localhost:3000/api/v1/destinations', {
+		fetch('https://weekendweatherwatcherbackend/api/v1/destinations', {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',
