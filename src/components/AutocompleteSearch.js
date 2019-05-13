@@ -12,9 +12,6 @@ class AutocompleteSearch extends React.Component {
 		this.setState({ address });
 	};
 
-	// This method returns the selected destination's "latLng" and "address"
-	// to the form to set state in DestinationFormContainer. Destination found
-	// by PlacesAutocomplete below.
 	handleSelect = (address) => {
 		console.log('properly formated address', address);
 		geocodeByAddress(address)
@@ -49,10 +46,6 @@ class AutocompleteSearch extends React.Component {
 							{loading && <div />}
 							{suggestions.map((suggestion) => {
 								const className = suggestion.active ? 'suggestion-item-active' : 'suggestion-item';
-								// inline style for demonstration purpose
-								// const searchOptions = {
-								// 	location: new google.maps.LatLng()
-								// };
 
 								return (
 									<div
@@ -71,7 +64,5 @@ class AutocompleteSearch extends React.Component {
 		);
 	}
 }
-
-//can enter a loading on line 40 between divs
 
 export default AutocompleteSearch;

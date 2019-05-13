@@ -1,9 +1,6 @@
 import React from 'react';
 
 const SignUpForm = (props) => {
-	// let currentUser = JSON.parse(sessionStorage.getItem('user'));
-	// let currentUser = sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user')) : null;
-
 	return (
 		<form className="user-form" onSubmit={(ev) => props.handleSignUpSubmit(ev)}>
 			<div className="app-name">Weekend Weather Watcher</div>
@@ -48,7 +45,4 @@ const SignUpForm = (props) => {
 	);
 };
 
-// <button id="toggle-sign-up-button" onClick={props.toggleSignUp}>
-// 	Return to Login
-// </button>
 export default SignUpForm;

@@ -2,6 +2,7 @@ import React from 'react';
 
 const NavBar = (props) => {
 	let currentUser = JSON.parse(sessionStorage.getItem('user'));
+
 	return (
 		<div className={`nav-bar non-form-element`}>
 			<div className={`nav-app-name nav-bar-text`}>Weekend Weather Watcher</div>

@@ -17,7 +17,4 @@ const AddDestinationTagForm = (props) => {
 	);
 };
 
-// <button className="button" value={this.state.currentTag} onClick={(ev) => this.props.persistTag(ev)}>
-// 	Add Tag
-// </button>
 export default AddDestinationTagForm;
