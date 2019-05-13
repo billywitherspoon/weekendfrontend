@@ -5,7 +5,6 @@ import SignUpForm from '../components/SignUpForm.js';
 class UserFormContainer extends Component {
 	constructor(props) {
 		super(props);
-		// this.currentUser = JSON.parse(sessionStorage.getItem('user'));
 		this.currentUser = sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user')) : null;
 		this.state = {
 			username: '',

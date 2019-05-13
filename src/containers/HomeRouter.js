@@ -9,7 +9,6 @@ import UserFormContainer from './UserFormContainer';
 class HomeRouter extends Component {
 	constructor(props) {
 		super(props);
-		// this.currentUser = JSON.parse(sessionStorage.getItem('user'));
 		this.currentUser = sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user')) : null;
 		this.state = {
 			showDestinationFormContainer: false

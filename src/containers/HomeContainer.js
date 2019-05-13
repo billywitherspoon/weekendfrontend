@@ -17,9 +17,6 @@ class HomeContainer extends React.Component {
 		}
 	};
 
-	//this was in line 17 but does not seem to belong
-	//allDestinations={this.state.allDestinations}
-
 	render() {
 		return (
 			<div>

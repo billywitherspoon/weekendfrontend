@@ -1,8 +1,4 @@
-// <button className="button" id="sunny-only-button">
-// 	SUNNY ONLY
-// </button>
 import React, { Component } from 'react';
-// import DestinationFormContainer from './DestinationFormContainer';
 import DestinationCard from '../components/DestinationCard';
 
 class ProfileContainer extends Component {
@@ -32,10 +28,6 @@ class ProfileContainer extends Component {
 		fetch(`https://weekendweatherwatcherbackend.herokuapp.com/api/v1/favorites/user/${this.currentUser.id}`)
 			.then((res) => res.json())
 			.then((json) => {
-				// let allFavorites = [];
-				// for (let i = 0; i < json.length; i++) {
-				// 	allFavorites.push(json[i].destination);
-				// }
 				this.setState({
 					allFavorites: json
 				});
@@ -100,6 +92,5 @@ class ProfileContainer extends Component {
 		);
 	}
 }
-// {this.renderDestinationList()}
 
 export default ProfileContainer;

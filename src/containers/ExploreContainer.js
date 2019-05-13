@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-// import DestinationFormContainer from './DestinationFormContainer';
-
 import DestinationCard from '../components/DestinationCard';
 
 class ExploreContainer extends Component {

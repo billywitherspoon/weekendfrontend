@@ -109,9 +109,6 @@ class DestinationFormContainer extends Component {
 
 	setLatLng = (latLng) => {
 		console.log('Setting lat/lon state in form.');
-		// this.setState((prevState) => {
-		// 	return { latLng: latLng };
-		// });
 		this.setState({ latLng });
 	};
 
@@ -123,7 +120,6 @@ class DestinationFormContainer extends Component {
 	setPlaceId = (placeId) => {
 		console.log('PLACE ID', placeId);
 		this.setState({ placeId });
-		// fetch(`https://maps.googleapis.com/maps/api/place/details/json?placeid=${placeId}&fields=photo&key=AIzaSyAntpQHNnQ1VhJKBJ8ikMKb7HZ-g83JxKA`)
 		fetch(
 			'https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4&fields=name,rating,formatted_phone_number&key=AIzaSyAntpQHNnQ1VhJKBJ8ikMKb7HZ-g83JxKA'
 		)
@@ -145,8 +141,6 @@ class DestinationFormContainer extends Component {
 				};
 			});
 		}
-
-		// this.setState({ addTags: true, tagCount: 0 });
 	};
 
 	render() {
@@ -213,13 +207,5 @@ class DestinationFormContainer extends Component {
 		);
 	}
 }
-
-// sessionToken: this.createSessionToken(),
-
-// createSessionToken = () => {
-// 	let token = Math.random() * 1000000000000000000;
-// 	console.log('TOKEN:', token);
-// 	return token;
-// };
 
 export default DestinationFormContainer;
