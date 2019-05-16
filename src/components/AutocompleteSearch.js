@@ -19,17 +19,17 @@ class AutocompleteSearch extends React.Component {
 			.then((latLng) => {
 				this.props.setLatLng(latLng);
 				this.props.setDestination(address);
-				this.addPlaceId();
+				// this.addPlaceId();
 			})
 			.catch((error) => console.error('Error', error));
 	};
 
-	addPlaceId = () => {
-		console.log('Adding place id');
-		geocodeByAddress(this.state.address)
-			.then((results) => this.props.setPlaceId(results[0].place_id))
-			.catch((error) => console.error('Error', error));
-	};
+	// addPlaceId = () => {
+	// 	console.log('Adding place id');
+	// 	geocodeByAddress(this.state.address)
+	// 		.then((results) => this.props.setPlaceId(results[0].place_id))
+	// 		.catch((error) => console.error('Error', error));
+	// };
 
 	render() {
 		return (

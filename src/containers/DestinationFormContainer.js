@@ -81,7 +81,6 @@ class DestinationFormContainer extends Component {
 
 	postDestination = () => {
 		this.props.hideDestinationForm();
-
 		let destinationFormData = {
 			destination: {
 				latitude: this.state.latLng.lat,
@@ -91,8 +90,8 @@ class DestinationFormContainer extends Component {
 				user_id: this.currentUser.id
 			}
 		};
-		console.log('DATA: ', destinationFormData);
-		fetch('https://localhost:3000/api/v1/destinations', {
+		console.log('Posting Destinaion DATA: ', destinationFormData);
+		fetch('http://localhost:3000/api/v1/destinations', {
 			method: 'POST',
 			headers: {
 				Accept: 'application/json',
@@ -102,7 +101,7 @@ class DestinationFormContainer extends Component {
 		})
 			.then((res) => res.json())
 			.then((json) => {
-				console.log(json);
+				console.log('response to posting destination', json);
 			})
 			.catch((error) => console.error('Error', error));
 	};
@@ -117,15 +116,15 @@ class DestinationFormContainer extends Component {
 		this.setState({ destination });
 	};
 
-	setPlaceId = (placeId) => {
-		console.log('PLACE ID', placeId);
-		this.setState({ placeId });
-		fetch(
-			'https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4&fields=name,rating,formatted_phone_number&key=AIzaSyAntpQHNnQ1VhJKBJ8ikMKb7HZ-g83JxKA'
-		)
-			.then((res) => res.json())
-			.then((json) => console.log('IMGS?: ', json));
-	};
+	// setPlaceId = (placeId) => {
+	// 	console.log('PLACE ID', placeId);
+	// 	this.setState({ placeId });
+	// 	fetch(
+	// 		'https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4&fields=name,rating,formatted_phone_number&key=AIzaSyAntpQHNnQ1VhJKBJ8ikMKb7HZ-g83JxKA'
+	// 	)
+	// 		.then((res) => res.json())
+	// 		.then((json) => console.log('IMGS?: ', json));
+	// };
 
 	persistTag = (ev = '') => {
 		if (ev) {

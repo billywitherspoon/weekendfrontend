@@ -25,7 +25,7 @@ class ProfileContainer extends Component {
 	};
 
 	fetchFavorites = () => {
-		fetch(`https://localhost:3000/api/v1/favorites/user/${this.currentUser.id}`)
+		fetch(`http://localhost:3000/api/v1/favorites/user/${this.currentUser.id}`)
 			.then((res) => res.json())
 			.then((json) => {
 				this.setState({
@@ -36,7 +36,7 @@ class ProfileContainer extends Component {
 	};
 
 	fetchUser = () => {
-		fetch(`https://localhost:3000/api/v1/users/${this.currentUser.id}`).then((res) => res.json()).then((json) => {
+		fetch(`http://localhost:3000/api/v1/users/${this.currentUser.id}`).then((res) => res.json()).then((json) => {
 			console.log('userInfoAPIreturn', json);
 			this.setState({
 				userInfo: json,
