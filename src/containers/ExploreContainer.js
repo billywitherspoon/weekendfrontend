@@ -13,12 +13,10 @@ class ExploreContainer extends Component {
 	};
 
 	fetchDestinations = () => {
-		fetch('https://weekendweatherwatcherbackend.herokuapp.com/api/v1/destinations')
-			.then((res) => res.json())
-			.then((json) => {
-				this.setState({ allDestinations: json });
-				console.log('all destinations', json);
-			});
+		fetch('https://localhost:3000/api/v1/destinations').then((res) => res.json()).then((json) => {
+			this.setState({ allDestinations: json });
+			console.log('all destinations', json);
+		});
 	};
 
 	renderDestinationList = () => {

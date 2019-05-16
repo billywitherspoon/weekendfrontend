@@ -36,7 +36,7 @@ class UserFormContainer extends Component {
 		console.log(ev);
 		if (this.state.username) {
 			this.toggleShowContent();
-			fetch(`https://weekendweatherwatcherbackend.herokuapp.com/api/v1/users/username/${this.state.username}`)
+			fetch(`https://localhost:3000/api/v1/users/username/${this.state.username}`)
 				.then((res) => res.json())
 				.then((user_json) => {
 					console.log(user_json);
@@ -71,7 +71,7 @@ class UserFormContainer extends Component {
 				first_name: `${this.state.firstName}`,
 				last_name: `${this.state.lastName}`
 			};
-			fetch('https://weekendweatherwatcherbackend.herokuapp.com/api/v1/users', {
+			fetch('https://localhost:3000/api/v1/users', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
