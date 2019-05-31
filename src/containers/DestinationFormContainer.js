@@ -18,6 +18,7 @@ class DestinationFormContainer extends Component {
 		};
 	}
 
+	//sets the destination after the form container has been mounted
 	componentDidMount = () => {
 		let latLng = '';
 		console.log('currentDestination', this.props.currentDestination);
@@ -32,6 +33,7 @@ class DestinationFormContainer extends Component {
 		}
 	};
 
+	//adds a place id to the current destination
 	addPlaceIdCurrentDestination = () => {
 		console.log('adding place id');
 		console.log('address', this.props.currentDestination.name);
@@ -40,6 +42,7 @@ class DestinationFormContainer extends Component {
 			.catch((error) => console.error('Error', error));
 	};
 
+	//adds a '#' to the users input
 	updateTagName = (ev) => {
 		let hashTag = ev.target.value;
 		if (hashTag[0] !== '#') {
@@ -48,6 +51,7 @@ class DestinationFormContainer extends Component {
 		this.setState({ currentTag: hashTag });
 	};
 
+	//handles submit of a new destination and its tags
 	handleDestinationFormSubmit = (ev, currentDestination) => {
 		if (ev) {
 			ev.preventDefault();
@@ -66,19 +70,20 @@ class DestinationFormContainer extends Component {
 					currentTag: ''
 				},
 				() => {
-					console.log('running anon function');
-					console.log('state', this.state);
+					console.log('posting the destination');
 					this.postDestination();
 				}
 			);
 		} else if (this.state.tags.length) {
 			console.log('no active current tag');
+			console.log('posting the destination');
 			this.postDestination();
 		} else {
 			alert('Please add a tag');
 		}
 	};
 
+	//posts a new destination to the backend
 	postDestination = () => {
 		this.props.hideDestinationForm();
 		let destinationFormData = {
@@ -90,7 +95,7 @@ class DestinationFormContainer extends Component {
 				user_id: this.currentUser.id
 			}
 		};
-		console.log('Posting Destinaion DATA: ', destinationFormData);
+		console.log('Posting Destination with this data: ', destinationFormData);
 		fetch('https://weekendweatherwatcherbackend.herokuapp.com/api/v1/destinations', {
 			method: 'POST',
 			headers: {
@@ -102,36 +107,29 @@ class DestinationFormContainer extends Component {
 			.then((res) => res.json())
 			.then((json) => {
 				console.log('response to posting destination', json);
+				this.props.updateDestinationStates();
 			})
 			.catch((error) => console.error('Error', error));
 	};
 
+	//sets the latlong as state
 	setLatLng = (latLng) => {
 		console.log('Setting lat/lon state in form.');
 		this.setState({ latLng });
 	};
 
+	//sets the destination as set
 	setDestination = (destination) => {
 		console.log('Setting destination.');
 		this.setState({ destination });
 	};
 
-	// setPlaceId = (placeId) => {
-	// 	console.log('PLACE ID', placeId);
-	// 	this.setState({ placeId });
-	// 	fetch(
-	// 		'https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4&fields=name,rating,formatted_phone_number&key=AIzaSyAntpQHNnQ1VhJKBJ8ikMKb7HZ-g83JxKA'
-	// 	)
-	// 		.then((res) => res.json())
-	// 		.then((json) => console.log('IMGS?: ', json));
-	// };
-
+	//handles the submit of a tag to a destination, adds to array of tags to be included upon destination form submit
 	persistTag = (ev = '') => {
 		if (ev) {
 			ev.preventDefault();
 		}
 		if (this.state.currentTag) {
-			// let hashTag = '#' + this.state.currentTag.split(' ').join('');
 			let hashTag = '#' + this.state.currentTag.split(' ').join('').toLowerCase().replace(/\W/g, '');
 			this.setState((st) => {
 				return {

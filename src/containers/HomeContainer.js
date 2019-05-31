@@ -11,6 +11,7 @@ class HomeContainer extends React.Component {
 		};
 	}
 
+	//if a user is logged in show the user page info
 	renderUserPageContainer = () => {
 		if (this.currentUser) {
 			return <UserPageContainer logoutUser={this.props.logoutUser} />;

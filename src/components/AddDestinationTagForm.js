@@ -1,5 +1,7 @@
 import React from 'react';
 
+//	This function returns a form to add a tag after the destination form has been loaded
+
 const AddDestinationTagForm = (props) => {
 	return (
 		<form id="add-tag-form" onSubmit={(ev) => props.persistTag(ev)}>

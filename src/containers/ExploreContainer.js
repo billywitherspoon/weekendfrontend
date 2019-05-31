@@ -5,27 +5,13 @@ class ExploreContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.currentUser = JSON.parse(sessionStorage.getItem('user'));
-		this.state = { allDestinations: '' };
 	}
 
-	componentDidMount = () => {
-		this.fetchDestinations();
-	};
-
-	fetchDestinations = () => {
-		fetch('https://weekendweatherwatcherbackend.herokuapp.com/api/v1/destinations')
-			.then((res) => res.json())
-			.then((json) => {
-				this.setState({ allDestinations: json });
-				console.log('all destinations', json);
-			});
-	};
-
 	renderDestinationList = () => {
-		if (this.state.allDestinations) {
+		if (this.props.allDestinations) {
 			return (
 				<div className="destination-list">
-					{this.state.allDestinations.map((destination) => {
+					{this.props.allDestinations.map((destination) => {
 						return (
 							<DestinationCard
 								key={Math.random()}

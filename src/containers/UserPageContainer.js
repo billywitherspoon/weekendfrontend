@@ -13,9 +13,53 @@ class UserPageContainer extends Component {
 			selectedLocation: '',
 			showDestinationFormContainer: false,
 			currentDestination: '',
-			fakeState: 1
+			allFavorites: null,
+			userInfo: null,
+			allTags: null,
+			allDestinations: null
 		};
 	}
+
+	componentDidMount = () => {
+		this.fetchFavorites();
+		this.fetchUser();
+		this.fetchAllDestinations();
+	};
+
+	//fetches all destinations for all users from the backend
+	fetchAllDestinations = () => {
+		fetch('https://weekendweatherwatcherbackend.herokuapp.com/api/v1/destinations')
+			.then((res) => res.json())
+			.then((json) => {
+				this.setState({ allDestinations: json });
+				console.log('all destinations', json);
+			});
+	};
+
+	//fetches a users favorites from the backend
+	fetchFavorites = () => {
+		fetch(`https://weekendweatherwatcherbackend.herokuapp.com/api/v1/favorites/user/${this.currentUser.id}`)
+			.then((res) => res.json())
+			.then((json) => {
+				this.setState({
+					allFavorites: json
+				});
+				console.log('favorites', json);
+			});
+	};
+
+	//fetches a users info from the backend
+	fetchUser = () => {
+		fetch(`https://weekendweatherwatcherbackend.herokuapp.com/api/v1/users/${this.currentUser.id}`)
+			.then((res) => res.json())
+			.then((json) => {
+				console.log('userInfoAPIreturn', json);
+				this.setState({
+					userInfo: json,
+					allTags: json.tags
+				});
+			});
+	};
 
 	//Toggles between user's profile container and explore container page
 	toggleView = () => {
@@ -24,15 +68,17 @@ class UserPageContainer extends Component {
 		});
 	};
 
-	updateUserPageContainer = () => {
-		this.forceUpdate();
+	//takes an argument of a new destination and updates the state for allFavorites and allDestinations
+	updateDestinationStates = (destination) => {
 		this.setState((st) => {
 			return {
-				fakeState: st.fakeState + 1
+				allDestinations: st.push(destination),
+				allFavorites: st.push(destination)
 			};
 		});
 	};
 
+	//when called, shows the destination form container and updates the current destination state
 	addDestination = (destination = '') => {
 		this.setState({
 			showDestinationFormContainer: true,
@@ -68,17 +114,13 @@ class UserPageContainer extends Component {
 					<DestinationFormContainer
 						hideDestinationForm={this.hideDestinationForm}
 						currentDestination={this.state.currentDestination}
-						updateUserPageContainer={this.updateUserPageContainer}
+						updateDestinationStates={this.updateDestinationStates}
 					/>
 				</span>
 			);
 		} else {
 			return null;
 		}
-	};
-
-	handleAddToFavorites = (destination) => {
-		this.setState({ currentDestination: destination });
 	};
 
 	render() {
@@ -92,12 +134,18 @@ class UserPageContainer extends Component {
 					logoutUser={this.props.logoutUser}
 				/>
 				{this.state.viewProfile ? (
-					<ProfileContainer toggleView={this.toggleView} addDestination={this.addDestination} />
+					<ProfileContainer
+						toggleView={this.toggleView}
+						addDestination={this.addDestination}
+						allFavorites={this.state.allFavorites}
+						userInfo={this.state.userInfo}
+						allTags={this.state.allFavorites}
+					/>
 				) : (
 					<ExploreContainer
 						toggleView={this.toggleView}
 						addDestination={this.addDestination}
-						allDestinations={this.props.allDestinations}
+						allDestinations={this.state.allDestinations}
 					/>
 				)}
 			</div>

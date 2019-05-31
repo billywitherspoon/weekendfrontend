@@ -5,7 +5,6 @@ import partly_cloudy_day from '../Images/partly_cloudy.png';
 import rain from '../Images/rain.png';
 import sleet from '../Images/sleet.png';
 import snow from '../Images/snow.png';
-// import clear_dayTEST from '../Images/sun.png';
 import clear_day from '../Images/yellow_sun.png';
 import clear_night from '../Images/clear_night.png';
 import fog from '../Images/fog.png';
@@ -18,12 +17,16 @@ class WeatherCard extends Component {
 		this.state = {};
 	}
 
+	//finds the current day of the week
 	determineDayOfWeek = () => {
 		let today = new Date();
 		let dayOfWeek = today.getDay();
 		return dayOfWeek;
 	};
 
+	//takes an argument of the current day of week
+	//returns an array of size 2 or 3
+	//returned array is an index for sat, sun or fri, sat, sun
 	howFarFromWeekend = (dayOfWeek) => {
 		let days = [];
 		if (dayOfWeek === 6) {
@@ -42,6 +45,7 @@ class WeatherCard extends Component {
 		return days;
 	};
 
+	//returns weatherIcons for the weekend
 	showWeatherForWeekend = () => {
 		let dayOfWeek = this.determineDayOfWeek();
 		let daysToDisplay = this.howFarFromWeekend(dayOfWeek);
@@ -91,6 +95,7 @@ class WeatherCard extends Component {
 		return theIcons;
 	};
 
+	//function for future implementation of weather tags
 	renderWeatherTags = () => {
 		return null;
 	};

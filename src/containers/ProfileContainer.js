@@ -5,60 +5,21 @@ class ProfileContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.currentUser = JSON.parse(sessionStorage.getItem('user'));
-		this.state = {
-			allFavorites: '',
-			userInfo: '',
-			allTags: '',
-			sunnyOnly: false
-		};
 	}
 
-	sunnyToggle = () => {
-		this.setState((s) => {
-			return { sunnyOnly: !s.sunnyOnly };
-		});
-	};
-
-	componentDidMount = () => {
-		this.fetchFavorites();
-		this.fetchUser();
-	};
-
-	fetchFavorites = () => {
-		fetch(`https://weekendweatherwatcherbackend.herokuapp.com/api/v1/favorites/user/${this.currentUser.id}`)
-			.then((res) => res.json())
-			.then((json) => {
-				this.setState({
-					allFavorites: json
-				});
-				console.log('favorites', json);
-			});
-	};
-
-	fetchUser = () => {
-		fetch(`https://weekendweatherwatcherbackend.herokuapp.com/api/v1/users/${this.currentUser.id}`)
-			.then((res) => res.json())
-			.then((json) => {
-				console.log('userInfoAPIreturn', json);
-				this.setState({
-					userInfo: json,
-					allTags: json.tags
-				});
-			});
-	};
-
+	//renders a set of destination cards for a single tag div
 	renderDestinationCards = (tagId) => {
 		let destinationCardArray = [];
-		for (let i = 0; i < this.state.allFavorites.length; i++) {
-			for (let j = 0; j < this.state.allFavorites[i].tags.length; j++)
-				if (this.state.allFavorites[i].tags[j].id === tagId) {
-					let destination = this.state.allFavorites[i].destination;
-					destination.forecasts = this.state.allFavorites[i].forecasts;
+		for (let i = 0; i < this.props.allFavorites.length; i++) {
+			for (let j = 0; j < this.props.allFavorites[i].tags.length; j++)
+				if (this.props.allFavorites[i].tags[j].id === tagId) {
+					let destination = this.props.allFavorites[i].destination;
+					destination.forecasts = this.props.allFavorites[i].forecasts;
 					destinationCardArray.push(
 						<DestinationCard
 							destination={destination}
 							profileView={true}
-							forecasts={this.state.allFavorites[i].forecasts}
+							forecasts={this.props.allFavorites[i].forecasts}
 							key={i}
 						/>
 					);
@@ -67,9 +28,10 @@ class ProfileContainer extends Component {
 		return destinationCardArray;
 	};
 
+	//renders the divs that have a single tag and multiple destinations nested
 	renderTagDivs = () => {
-		if (this.state.allTags && this.state.allFavorites) {
-			return this.state.allTags.map((tag) => {
+		if (this.props.allTags && this.props.allFavorites) {
+			return this.props.allTags.map((tag) => {
 				return (
 					<div id="user-tag-container" key={Math.random()}>
 						<div id="user-tag-name">{tag.name}</div>
@@ -80,6 +42,7 @@ class ProfileContainer extends Component {
 		}
 	};
 
+	//renders a single div that has a nested set of destination card divs for a single tag div
 	renderDestinationList = (tagId) => {
 		return <div className="destination-list">{this.renderDestinationCards(tagId)}</div>;
 	};

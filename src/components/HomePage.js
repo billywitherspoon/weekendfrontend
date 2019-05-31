@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
+//likely do not need this page
 
-class HomePAge extends Component {
-  render() {
-    return (
-      <div>
-        APP NAME HERE
-      </div>
-    );
-  }
-}
+// import React, { Component } from 'react';
 
-export default HomePAge;
+// class HomePAge extends Component {
+//   render() {
+//     return (
+//       <div>
+//         APP NAME HERE
+//       </div>
+//     );
+//   }
+// }
+
+// export default HomePAge;
