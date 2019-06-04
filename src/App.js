@@ -39,11 +39,11 @@ class App extends Component {
 	};
 
 	logoutUser = () => {
-		sessionStorage.removeItem('user');
-		console.log('user logged out');
 		this.setState({
 			loggedIn: false
 		});
+		sessionStorage.removeItem('user');
+		console.log('user logged out');
 	};
 	render() {
 		return (
