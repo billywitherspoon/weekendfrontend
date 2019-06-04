@@ -24,6 +24,7 @@ class DestinationCard extends Component {
 					{this.props.profileView ? null : (
 						<button
 							className="button"
+							id="add-to-favorites-button"
 							onClick={() => {
 								this.props.addDestination(this.props.destination);
 							}}

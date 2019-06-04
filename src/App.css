@@ -171,7 +171,7 @@ body {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  font-size: 4vh;
+  font-size: 3vh;
 }
 
 #tag-container {
@@ -224,16 +224,8 @@ body {
   font-family: Permanent Marker;
 }
 
-/* #add-to-favorite-button {
-  grid-row: 4/5;
-  grid-column: 1;
-  align-self: center;
-}
-
-#cancel-destination-button {
-  grid-row: 5/6;
-  grid-column: 1;
-  align-self: center;
+/* #add-to-favorites-button {
+  margin-bottom: 2vh;
 } */
 
 .flex-center {
@@ -341,8 +333,8 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  margin: 2vmin;
-  flex-wrap: wrap;
+  margin: 4vmin;
+  padding: 2vmin;
   box-shadow: 0 0.25vmin 0.5vmin 0 rgba(0, 0, 0, 0.2), 0 0.5vmin 1vmin 0 rgba(0, 0, 0, 0.19);
 }
 
@@ -352,6 +344,14 @@ body {
 
 .destination-card-image {
   height: 100px;
+}
+
+.weather-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin: 1vmin;
+  margin-bottom: -1vmin;
 }
 
 @media only screen and (max-width: 900px) {
@@ -427,7 +427,6 @@ body {
 .weather-card-text {
   font-size: 2vmin;
   text-align: center;
-  padding-bottom: 1vmin;
 }
 
 /* @keyframes app-rotate {

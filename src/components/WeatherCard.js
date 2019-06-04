@@ -101,11 +101,7 @@ class WeatherCard extends Component {
 	};
 
 	render() {
-		return (
-			<div className="flex-center">
-				<div className="weather-card">{this.showWeatherForWeekend()}</div>
-			</div>
-		);
+		return <div className="weather-row">{this.showWeatherForWeekend()}</div>;
 	}
 }
 
