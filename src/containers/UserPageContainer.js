@@ -30,9 +30,9 @@ class UserPageContainer extends Component {
 	fetchAllDestinations = () => {
 		fetch('https://weekendweatherwatcherbackend.herokuapp.com/api/v1/destinations')
 			.then((res) => res.json())
-			.then((json) => {
-				this.setState({ allDestinations: json });
-				console.log('all destinations', json);
+			.then((allDestinations) => {
+				this.setState({ allDestinations });
+				console.log('all destinations', allDestinations);
 			});
 	};
 
@@ -40,11 +40,11 @@ class UserPageContainer extends Component {
 	fetchFavorites = () => {
 		fetch(`https://weekendweatherwatcherbackend.herokuapp.com/api/v1/favorites/user/${this.currentUser.id}`)
 			.then((res) => res.json())
-			.then((json) => {
+			.then((allFavorites) => {
 				this.setState({
-					allFavorites: json
+					allFavorites
 				});
-				console.log('favorites', json);
+				console.log('favorites', allFavorites);
 			});
 	};
 
@@ -70,12 +70,16 @@ class UserPageContainer extends Component {
 
 	//takes an argument of a new destination and updates the state for allFavorites and allDestinations
 	updateDestinationStates = (destination) => {
-		this.setState((st) => {
-			return {
-				allDestinations: st.push(destination),
-				allFavorites: st.push(destination)
-			};
-		});
+		// this.setState((prevState) => {
+		// 	console.log('previous state', prevState);
+		// 	console.log('new destination', destination);
+		// 	return {
+		// 		allFavorites: prevState.allFavorites.push(destination)
+		// 	};
+		// });
+		this.fetchFavorites();
+		this.fetchUser();
+		this.fetchAllDestinations();
 	};
 
 	//when called, shows the destination form container and updates the current destination state
@@ -139,7 +143,7 @@ class UserPageContainer extends Component {
 						addDestination={this.addDestination}
 						allFavorites={this.state.allFavorites}
 						userInfo={this.state.userInfo}
-						allTags={this.state.allFavorites}
+						allTags={this.state.allTags}
 					/>
 				) : (
 					<ExploreContainer

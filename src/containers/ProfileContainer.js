@@ -9,6 +9,7 @@ class ProfileContainer extends Component {
 
 	//renders a set of destination cards for a single tag div
 	renderDestinationCards = (tagId) => {
+		console.log('in renderDestinationCards function');
 		let destinationCardArray = [];
 		for (let i = 0; i < this.props.allFavorites.length; i++) {
 			for (let j = 0; j < this.props.allFavorites[i].tags.length; j++)
@@ -30,6 +31,8 @@ class ProfileContainer extends Component {
 
 	//renders the divs that have a single tag and multiple destinations nested
 	renderTagDivs = () => {
+		console.log('rendering tag divs with this allTags:', this.props.allTags);
+		console.log('rendering tag divs with this allFavs:', this.props.allFavorites);
 		if (this.props.allTags && this.props.allFavorites) {
 			return this.props.allTags.map((tag) => {
 				return (
@@ -44,6 +47,7 @@ class ProfileContainer extends Component {
 
 	//renders a single div that has a nested set of destination card divs for a single tag div
 	renderDestinationList = (tagId) => {
+		console.log('rendering destination list with this tagID:', tagId);
 		return <div className="destination-list">{this.renderDestinationCards(tagId)}</div>;
 	};
 

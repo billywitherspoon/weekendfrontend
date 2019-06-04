@@ -107,7 +107,7 @@ class DestinationFormContainer extends Component {
 			.then((res) => res.json())
 			.then((json) => {
 				console.log('response to posting destination', json);
-				this.props.updateDestinationStates();
+				this.props.updateDestinationStates(json);
 			})
 			.catch((error) => console.error('Error', error));
 	};
@@ -138,6 +138,17 @@ class DestinationFormContainer extends Component {
 				};
 			});
 		}
+	};
+
+	setPlaceId = (placeId) => {
+		//handles the submit of a tag to a destination, adds to array of tags to be included upon destination form submit
+		console.log('PLACE ID', placeId);
+		this.setState({ placeId });
+		// fetch(
+		// 	'https://maps.googleapis.com/maps/api/place/details/json?placeid=ChIJN1t_tDeuEmsRUsoyG83frY4&fields=name,rating,formatted_phone_number&key=AIzaSyAntpQHNnQ1VhJKBJ8ikMKb7HZ-g83JxKA'
+		// )
+		// 	.then((res) => res.json())
+		// 	.then((json) => console.log('IMGS?: ', json));
 	};
 
 	render() {

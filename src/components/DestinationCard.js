@@ -10,6 +10,7 @@ class DestinationCard extends Component {
 
 	render() {
 		let forecast = this.props.destination.forecasts[this.props.destination.forecasts.length - 1].data;
+		console.log('destination card info:', this.props.destination);
 		return (
 			<div className="flex-center">
 				<div className="destination-card">

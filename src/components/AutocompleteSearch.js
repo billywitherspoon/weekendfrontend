@@ -24,14 +24,6 @@ class AutocompleteSearch extends React.Component {
 			.catch((error) => console.error('Error', error));
 	};
 
-	// previously written code to add a place ID, unknown if it will work, can be implemented later
-	// addPlaceId = () => {
-	// 	console.log('Adding place id');
-	// 	geocodeByAddress(this.state.address)
-	// 		.then((results) => this.props.setPlaceId(results[0].place_id))
-	// 		.catch((error) => console.error('Error', error));
-	// };
-
 	render() {
 		return (
 			<PlacesAutocomplete value={this.state.address} onChange={this.handleChange} onSelect={this.handleSelect}>

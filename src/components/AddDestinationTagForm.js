@@ -14,7 +14,7 @@ const AddDestinationTagForm = (props) => {
 				name="currentTag"
 				onChange={(ev) => props.updateTagName(ev)}
 			/>
-			<input class="button" type="submit" id="add-tag=button" value="ADD" />
+			<input className="button" type="submit" id="add-tag=button" value="ADD" />
 		</form>
 	);
 };
