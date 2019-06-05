@@ -100,9 +100,9 @@ class WeatherCard extends Component {
 				<div className="day-weather">
 					<div className="weather-icon">{this.renderWeatherIcon(day.icon)}</div>
 					<div className="sub-title">
-						High: {day.temperatureHigh}° F / Low: {day.temperatureLow}° F
+						{Math.round(day.temperatureHigh)}° / {Math.round(day.temperatureLow)}°
 					</div>
-					<div className="sub-title">Chance Precip: {day.precipProbability * 100}%</div>
+					<div className="sub-title">Precip: {Math.round(day.precipProbability * 100)}%</div>
 				</div>
 			);
 		});

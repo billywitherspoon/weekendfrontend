@@ -19,8 +19,9 @@ const LoginForm = (props) => {
 				SIGN UP
 			</button>
 			<div className="flex-center-column">
-				<div className="sub-title">An App by Billy Witherspoon and Madison Stankevich</div>
-				<div className="sub-title">Created Using React | JavaScript | Rails | Ruby</div>
+				<div className="sub-title">An app by Billy Witherspoon and Madison Stankevich</div>
+				<div className="sub-title">Created using React | JavaScript | Rails | Ruby</div>
+				<div className="sub-title">For demo, login with username "demo"</div>
 				<div className="sub-title">Please be patient with Heroku load times :)</div>
 			</div>
 		</form>

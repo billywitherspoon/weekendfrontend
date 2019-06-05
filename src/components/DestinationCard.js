@@ -16,7 +16,7 @@ class DestinationCard extends Component {
 				<div className="destination-card">
 					<div className="dest-card-title">{this.props.destination.name.split(',')[0]}</div>
 
-					<div className="weather-icons">
+					<div className="weather-info">
 						<div className="weather-card-text">This Weekend's Forecast</div>
 						<WeatherCard destinationForecast={forecast} />
 					</div>
