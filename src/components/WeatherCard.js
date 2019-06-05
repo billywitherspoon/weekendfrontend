@@ -46,22 +46,18 @@ class WeatherCard extends Component {
 	};
 
 	//returns weather data for the weekend
-	weekendWeatherIcons = () => {
-		weekendIconNames.forEach((icon) => {
-			if (icon === 'clear-day') {
-				weekendIcons.push(
-					<img alt={'Clear Day'} key={Math.random()} src={clear_day} className="weather-icon" />
-				);
-			} else if (icon === 'clear-night') {
-				weekendIcons.push(
-					<img alt={'Clear Night'} key={Math.random()} src={clear_night} className="weather-icon" />
-				);
-			} else if (icon === 'partly-cloudy-day') {
-				weekendIcons.push(
+	renderWeatherIcon = (icon) => {
+		switch (icon) {
+			case 'clear-day':
+				return <img alt={'Clear Day'} key={Math.random()} src={clear_day} className="weather-icon" />;
+			case 'clear-night':
+				return <img alt={'Clear Night'} key={Math.random()} src={clear_night} className="weather-icon" />;
+			case 'partly-cloudy-day':
+				return (
 					<img alt={'Partly Cloudy'} key={Math.random()} src={partly_cloudy_day} className="weather-icon" />
 				);
-			} else if (icon === 'partly-cloudy-night') {
-				weekendIcons.push(
+			case 'partly-cloudy-night':
+				return (
 					<img
 						alt={'Partly Cloudy Night'}
 						key={Math.random()}
@@ -69,42 +65,51 @@ class WeatherCard extends Component {
 						className="weather-icon"
 					/>
 				);
-			} else if (icon === 'cloudy') {
-				weekendIcons.push(<img alt={'Cloudy'} key={Math.random()} src={cloudy} className="weather-icon" />);
-			} else if (icon === 'rain') {
-				weekendIcons.push(<img alt={'Rain'} key={Math.random()} src={rain} className="weather-icon" />);
-			} else if (icon === 'sleet') {
-				weekendIcons.push(<img alt={'Sleet'} key={Math.random()} src={sleet} className="weather-icon" />);
-			} else if (icon === 'snow') {
-				weekendIcons.push(<img alt={'Snow'} key={Math.random()} src={snow} className="weather-icon" />);
-			} else if (icon === 'fog') {
-				weekendIcons.push(<img alt={'Fog'} key={Math.random()} src={fog} className="weather-icon" />);
-			} else if (icon === 'wind') {
-				weekendIcons.push(<img alt={'Wind'} key={Math.random()} src={wind} className="weather-icon" />);
-			}
+			case 'cloudy':
+				return <img alt={'Cloudy'} key={Math.random()} src={cloudy} className="weather-icon" />;
+			case 'rain':
+				return <img alt={'Rain'} key={Math.random()} src={rain} className="weather-icon" />;
+			case 'sleet':
+				return <img alt={'Sleet'} key={Math.random()} src={sleet} className="weather-icon" />;
+			case 'snow':
+				return <img alt={'Snow'} key={Math.random()} src={snow} className="weather-icon" />;
+			case 'fog':
+				return <img alt={'Fog'} key={Math.random()} src={fog} className="weather-icon" />;
+			case 'wind':
+				return <img alt={'Wind'} key={Math.random()} src={wind} className="weather-icon" />;
+			default:
+				return null;
+		}
+	};
+
+	renderWeekendWeather = () => {
+		let dayOfWeek = this.determineDayOfWeek();
+		let daysToDisplay = this.howFarFromWeekend(dayOfWeek);
+		let weekendIconNames = [];
+
+		daysToDisplay.forEach((day) => {
+			weekendIconNames.push(this.props.destinationForecast.daily.data[day]);
+		});
+
+		// daysToDisplay.forEach((day) => {
+		// 	weekendIconNames.push(this.props.destinationForecast.daily.data[day].icon);
+		// });
+
+		return weekendIconNames.map((day) => {
+			return (
+				<div className="day-weather">
+					<div className="weather-icon">{this.renderWeatherIcon(day.icon)}</div>
+					<div className="sub-title">
+						High: {day.temperatureHigh}° F / Low: {day.temperatureLow}° F
+					</div>
+					<div className="sub-title">Chance Precip: {day.precipProbability * 100}%</div>
+				</div>
+			);
 		});
 	};
 
-	w;
-
 	weekendWeatherRow = () => {
-		let dayOfWeek = this.determineDayOfWeek();
-		let daysToDisplay = this.howFarFromWeekend(dayOfWeek);
-
-		let weekendIconNames = [];
-		let weekendData = [];
-
-		daysToDisplay.forEach((day) => {
-			weekendIconNames.push(this.props.destinationForecast.daily.data[day].icon);
-		});
-
-		return (
-			<div className="weather-row">
-				<div className="single-day-weather">
-					<div>{this.weekendWeatherIcons}</div>
-				</div>
-			</div>
-		);
+		return <div className="weather-row">{this.renderWeekendWeather()}</div>;
 	};
 
 	//function for future implementation of weather tags
